@@ -83,6 +83,9 @@ body {
     background-attachment: fixed;
     z-index: 9999;
     pointer-events: none;
+    @include media(phone) {
+      opacity: 0.5;
+    }
   }
 }
 .high {
