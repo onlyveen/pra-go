@@ -6,6 +6,8 @@ import instagram from "@images/footer/instagram.svg";
 import linkedin from "@images/footer/linkedin.svg";
 import Image from "next/image";
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="footer">
       <div className="top-footer container">
@@ -23,7 +25,7 @@ const Footer = () => {
       </div>
       <div className="top-lower">
         <div className="container">
-          <p>© 2024 All rights reserved.</p>
+          <p>© {currentYear} All rights reserved.</p>
           <div className="socials">
             <a target="_blank" href="https://github.com/onlyveen">
               <Image src={github} alt="Github" />
