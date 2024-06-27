@@ -12,7 +12,6 @@ function MyApp({ Component, pageProps }) {
           name="description"
           content="Praveen Gorakala is a passionate designer focused on crafting impactful experiences in branding, UI/UX design, and web development."
         />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.png" />
 
         {/* Open Graph / Facebook */}
