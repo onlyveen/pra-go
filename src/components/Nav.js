@@ -58,7 +58,11 @@ const Nav = () => {
           <a href="/#my-writings">My Writings</a>
         </li>
         <li>
-          <a className="btn" href="#">
+          <a
+            className="btn"
+            href="https://calendly.com/onlyveen"
+            target="_blank"
+          >
             Let's Talk
           </a>
         </li>

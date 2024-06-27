@@ -17,7 +17,7 @@ const Footer = () => {
             Let's Partner On Your Next Innovation!
           </p>
         </div>
-        <a href="/" className="btn">
+        <a href="https://calendly.com/onlyveen" target="_blank" className="btn">
           Let's Talk <Image src={arw} alt="arrow-angle" />
         </a>
       </div>
