@@ -30,10 +30,14 @@ const Header = () => {
           work spans branding, UI/UX design, & web development.
         </p>
         <div className="actions">
-          <a href="/" className="btn">
+          <a
+            href="https://calendly.com/onlyveen"
+            target="_blank"
+            className="btn"
+          >
             Let's Talk
           </a>
-          <a href="/" className="btn hallow">
+          <a href="/#my-work" className="btn hallow">
             See My Work
           </a>
         </div>
