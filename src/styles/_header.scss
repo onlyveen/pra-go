@@ -119,6 +119,7 @@
       height: auto !important;
       z-index: 1;
       &:first-child {
+        width: 45% !important;
         @include media(tablet-landscape) {
           width: 60% !important;
         }
