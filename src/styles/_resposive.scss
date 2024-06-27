@@ -1,0 +1,144 @@
+// Variables for breakpoints
+$breakpoint-sm-phone: 320px;
+$breakpoint-md-phone: 375px;
+$breakpoint-phone: 768px;
+$breakpoint-tablet-portrait: 959px;
+$breakpoint-tablet-landscape: 1024px;
+$breakpoint-desktop: 1024px;
+$breakpoint-lg-desktop: 1440px;
+$breakpoint-xl-desktop: 1920px;
+
+// Mixin for media queries
+@mixin media($breakpoint) {
+  @if $breakpoint == sm-phone {
+    @media (max-width: $breakpoint-sm-phone) {
+      @content;
+    }
+  } @else if $breakpoint == md-phone {
+    @media (max-width: $breakpoint-md-phone) {
+      @content;
+    }
+  } @else if $breakpoint == phone {
+    @media (max-width: $breakpoint-phone) {
+      @content;
+    }
+  } @else if $breakpoint == tablet-portrait {
+    @media (max-width: $breakpoint-tablet-portrait) {
+      @content;
+    }
+  } @else if $breakpoint == tablet-landscape {
+    @media (max-width: $breakpoint-tablet-landscape) {
+      @content;
+    }
+  } @else if $breakpoint == desktop {
+    @media (max-width: $breakpoint-desktop) {
+      @content;
+    }
+  } @else if $breakpoint == lg-desktop {
+    @media (max-width: $breakpoint-lg-desktop) {
+      @content;
+    }
+  } @else if $breakpoint == xl-desktop {
+    @media (max-width: $breakpoint-xl-desktop) {
+      @content;
+    }
+  }
+}
+
+// Mixin for specific device ranges
+@mixin only-sm-phone {
+  @media (min-width: $breakpoint-sm-phone) and (max-width: $breakpoint-md-phone) {
+    @content;
+  }
+}
+
+@mixin only-md-phone {
+  @media (min-width: $breakpoint-md-phone) and (max-width: $breakpoint-phone) {
+    @content;
+  }
+}
+
+@mixin only-phone {
+  @media (min-width: $breakpoint-phone) and (max-width: $breakpoint-tablet-portrait) {
+    @content;
+  }
+}
+
+@mixin only-tablet-portrait {
+  @media (min-width: $breakpoint-tablet-portrait) and (max-width: $breakpoint-tablet-landscape) {
+    @content;
+  }
+}
+
+@mixin only-tablet-landscape {
+  @media (min-width: $breakpoint-tablet-landscape) and (max-width: $breakpoint-desktop) {
+    @content;
+  }
+}
+
+@mixin only-desktop {
+  @media (min-width: $breakpoint-desktop) and (max-width: $breakpoint-lg-desktop) {
+    @content;
+  }
+}
+
+@mixin only-lg-desktop {
+  @media (min-width: $breakpoint-lg-desktop) and (max-width: $breakpoint-xl-desktop) {
+    @content;
+  }
+}
+
+@mixin only-xl-desktop {
+  @media (min-width: $breakpoint-xl-desktop) {
+    @content;
+  }
+}
+
+// Mixin for specific device ranges
+@mixin above-sm-phone {
+  @media (min-width: $breakpoint-sm-phone) {
+    @content;
+  }
+}
+
+@mixin above-md-phone {
+  @media (min-width: $breakpoint-md-phone) {
+    @content;
+  }
+}
+
+@mixin above-phone {
+  @media (min-width: $breakpoint-phone) {
+    @content;
+  }
+}
+
+@mixin above-tablet-portrait {
+  @media (min-width: $breakpoint-tablet-portrait) {
+    @content;
+  }
+}
+
+@mixin above-tablet-landscape {
+  @media (min-width: $breakpoint-tablet-landscape) {
+    @content;
+  }
+}
+
+@mixin above-desktop {
+  @media (min-width: $breakpoint-desktop) {
+    @content;
+  }
+}
+
+@mixin above-lg-desktop {
+  @media (min-width: $breakpoint-lg-desktop) {
+    @content;
+  }
+}
+
+@mixin above-xl-desktop {
+  @media (min-width: $breakpoint-xl-desktop) {
+    @content;
+  }
+}

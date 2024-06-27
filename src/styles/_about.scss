@@ -1,0 +1,49 @@
+.about {
+  color: var(--text-bright);
+  background: var(--color-dark);
+  position: relative;
+  z-index: 2;
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 200px 0;
+    max-width: 50%;
+    @include media(phone) {
+      padding: 100px 0;
+      max-width: 80%;
+    }
+    .subTitle {
+      margin-bottom: 0;
+    }
+  }
+
+  p {
+    font-size: 24px;
+    text-align: center;
+    margin: 32px 0 64px;
+    line-height: 1.6;
+    @include media(phone) {
+      margin: 24px 0 32px;
+      font-size: 18px;
+    }
+  }
+  .icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    span {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100px;
+      img {
+        height: 64px;
+        width: auto;
+      }
+    }
+  }
+}

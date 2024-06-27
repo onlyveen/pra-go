@@ -1,0 +1,146 @@
+.navBar {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(21, 21, 21, 0.05);
+  backdrop-filter: blur(25px);
+  display: flex;
+  padding: 8px 16px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 23px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 10000;
+  transform: translateY(-100%);
+  transition: all 0.35s;
+  &.visible {
+    transform: translateY(0);
+  }
+  .logo {
+    border-radius: 64px;
+    background: rgba(243, 242, 238, 0.9);
+    backdrop-filter: blur(75px);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    padding-right: 24px;
+    @include media(phone) {
+      img {
+        height: 32px;
+        width: auto;
+      }
+    }
+    span {
+      text-transform: uppercase;
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 32px;
+      color: var(--text-dark);
+
+      @include media(phone) {
+        font-size: 24px;
+      }
+      b {
+        color: var(--color-primary);
+      }
+    }
+  }
+  .burgerMenu {
+    display: flex;
+    display: none;
+    height: 30px;
+    width: 30px;
+    gap: 10px;
+    flex-wrap: wrap;
+    transition: all 0.25s;
+    span {
+      height: 10px;
+      width: 10px;
+      transition: all 0.25s;
+      background: var(--color-bg);
+      border-radius: 10px;
+      transform-origin: center;
+      border: solid 1px var(--text-dark);
+    }
+    &.open {
+      height: 40px;
+      width: 40px;
+      gap: 0;
+      transform: translate(0px, 10px);
+      span {
+        height: 5px;
+        width: 20px;
+        border: none;
+        &:nth-child(1),
+        &:nth-child(4) {
+          transform: rotate(45deg);
+        }
+        &:nth-child(2),
+        &:nth-child(3) {
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
+
+  .menuItems {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    border-radius: 64px;
+    background: rgba(243, 242, 238, 0.9);
+    backdrop-filter: blur(75px);
+    display: flex;
+    padding: 8px 16px 8px 32px;
+    align-items: center;
+    gap: 32px;
+    li {
+      color: var(--text-dark);
+    }
+  }
+  @include media(phone) {
+    .burgerMenu {
+      display: flex;
+    }
+
+    .menuItems {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: -1;
+      background: var(--color-primary);
+      width: 100%;
+      padding: 0 32px 0;
+      height: 0;
+      border-radius: 0;
+      transition: all 0.35s;
+      overflow: hidden;
+      &.open {
+        height: 100vh;
+        padding: 200px 32px 32px;
+      }
+
+      li {
+        font-size: 48px;
+        font-weight: 900;
+        a {
+          color: var(--text-bright);
+        }
+        &:last-child {
+          margin-top: auto;
+        }
+        .btn {
+          padding: 16px 48px;
+          height: auto;
+          font-size: 32px;
+          border-radius: 100px;
+        }
+      }
+    }
+  }
+}

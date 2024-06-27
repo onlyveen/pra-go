@@ -1,0 +1,133 @@
+.header {
+  padding: 100px 0 0;
+  position: relative;
+  z-index: 1;
+  @include media(phone) {
+    padding: 50px 0 0;
+  }
+
+  .container {
+    max-width: 60%;
+    margin: auto;
+
+    @include media(tablet-landscape) {
+      max-width: 90%;
+    }
+  }
+  h1 {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    &::before {
+      content: "";
+      flex: 1;
+      order: 2;
+      height: 1px;
+      background: var(--text-dark);
+    }
+    @include media(phone) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    p.title {
+      order: 1;
+      font-size: 32px;
+      font-weight: 600;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      @include media(phone) {
+        font-size: px;
+      }
+      .pills {
+        display: flex;
+        gap: 8px;
+        small {
+          display: flex;
+          padding: 4px 12px;
+          justify-content: center;
+          align-items: center;
+          gap: 23px;
+          font-size: 12px;
+          font-weight: 400;
+          border-radius: 32px;
+          border: 1px solid var(--text-dark);
+        }
+      }
+    }
+    p.desig {
+      order: 3;
+      font-size: 16px;
+      @include media(phone) {
+        display: none;
+      }
+      .high {
+        font-size: 32px;
+        transform: translateY(9px);
+        display: inline-block;
+        line-height: 0;
+      }
+    }
+  }
+  .abstract {
+    margin: 32px 0 64px;
+    width: 70%;
+    font-size: 18px;
+    line-height: 1.6;
+    @include media(phone) {
+      width: 100%;
+      font-size: 14px;
+      margin: 24px 0 32px;
+    }
+  }
+  .actions {
+    display: flex;
+    gap: 12px;
+    @include media(phone) {
+      a {
+        flex: 1 0 0;
+      }
+    }
+  }
+  .abs {
+    position: relative;
+    margin-top: 100px;
+    .h2 {
+      position: relative;
+      right: 0;
+      width: 100% !important;
+      transform: scale(1.05);
+      z-index: 0;
+      margin-bottom: -5px;
+    }
+    // h2 {
+    //   color: var(--color-primary);
+    //   font-family: var(--font-head);
+    //   font-size: 34vw;
+    //   transform: scale(1.05);
+    //   font-style: normal;
+    //   font-weight: 700;
+    //   line-height: 0.7;
+    //   margin-top: 10%;
+    // }
+    img {
+      position: absolute;
+      width: auto !important;
+      right: 5%;
+      bottom: -5%;
+      height: auto !important;
+      z-index: 1;
+      &:first-child {
+        @include media(tablet-landscape) {
+          width: 60% !important;
+        }
+        @include media(phone) {
+          right: 0;
+          left: 0;
+          margin: auto;
+        }
+      }
+    }
+  }
+}

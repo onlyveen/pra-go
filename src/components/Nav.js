@@ -1,14 +1,66 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Image from "next/image";
+import veenImage from "@images/veen.png";
 
 const Nav = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      if (scrollPosition > window.innerHeight * 0.4) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+        setMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
-    <nav>
-      <ul>
+    <nav className={`navBar ${isVisible ? "visible" : ""}`}>
+      <a href="/#" className="logo">
+        <Image src={veenImage} alt="Veen Logo" width={40} />
+        <span>
+          Pra<b>VeeN</b>
+        </span>
+      </a>
+      <div
+        className={`burgerMenu ${menuOpen ? "open" : ""}`}
+        onClick={toggleMenu}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul
+        onClick={toggleMenu}
+        className={`menuItems ${menuOpen ? "open" : ""}`}
+      >
         <li>
-          <a href="/">Home</a>
+          <a href="/#about-me">Me</a>
         </li>
         <li>
-          <a href="/my-work">My Work</a>
+          <a href="/#my-work">My Work</a>
+        </li>
+        <li>
+          <a href="/#my-writings">My Writings</a>
+        </li>
+        <li>
+          <a className="btn" href="#">
+            Let's Talk
+          </a>
         </li>
       </ul>
     </nav>
