@@ -36,6 +36,8 @@ const Work = () => {
   const settings = {
     dots: false,
     infinite: true,
+    autoplay: true,
+    autoplaySpeed: 2000,
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 1,
