@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 import { useInView } from "react-intersection-observer";
 import Layout from "@components/Layout";
@@ -94,7 +94,7 @@ const ImageWithReveal = ({ photo, onClick }) => {
   });
 
   return (
-    <span className={`gallery-item ${inView ? "reveal" : ""}`}>
+    <span className={`gallery-item ${inView ? "reveal" : ""} `}>
       <img
         ref={ref}
         src={photo.src.large}
