@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 
-import { useInView } from "react-intersection-observer";
 import Layout from "@components/Layout";
 import { fetchPhotosFromCollection } from "@/lib/pexel";
 import Modal from "@/lib/Modal";
@@ -11,10 +10,10 @@ const PraGoView = () => {
   const [photos, setPhotos] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
+  const [hasMore, setHasMore] = useState(true);
   const [selectedPhoto, setSelectedPhoto] = useState(null);
-  const { pageEndRef, inView } = useInView({
-    triggerOnce: false,
-  });
+  const pageEndRef = useRef(null);
+  const photosCache = useRef({}); // Cache object to store fetched photos
 
   const handlePhotoClick = (photo) => {
     setSelectedPhoto(photo);
@@ -25,21 +24,44 @@ const PraGoView = () => {
   };
 
   const loadMorePhotos = useCallback(async () => {
+    if (!hasMore) return; // Stop fetching if no more pages
+
     setLoading(true);
+    console.log("new page load request", page);
+    console.log("loading", loading);
+
+    const cachedPhotos = photosCache.current[page];
+    if (cachedPhotos) {
+      // Use cached photos if available
+      setPhotos((prevPhotos) => [...prevPhotos, ...cachedPhotos]);
+      setLoading(false);
+      return;
+    }
+
     const newPhotos = await fetchPhotosFromCollection(collectionId, page);
     setPhotos((prevPhotos) => [...prevPhotos, ...newPhotos]);
+    photosCache.current[page] = newPhotos; // Cache fetched photos
+    setHasMore(newPhotos.length > 0); // Update hasMore based on new data
     setLoading(false);
-  }, [page]);
+  }, [page, hasMore]);
 
-  useEffect(() => {
-    if (inView) {
+  const handleScroll = () => {
+    const scrollY = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const contentHeight = document.documentElement.scrollHeight;
+
+    // Check if we're close to the bottom of the page
+    if (scrollY + windowHeight >= contentHeight - 100 && hasMore) {
       setPage((prevPage) => prevPage + 1);
     }
-  }, [inView]);
+  };
 
   useEffect(() => {
     loadMorePhotos();
-  }, [loadMorePhotos, page]);
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [page, loadMorePhotos]);
 
   return (
     <Layout>
@@ -69,14 +91,9 @@ const PraGoView = () => {
         </div>
         <div className="container grid">
           {photos.map((photo) => (
-            // <ImageWithReveal
-            //   key={photo.id}
-            //   photo={photo}
-            //   onClick={() => handlePhotoClick(photo)}
-            // />
             <span
               key={photo.id}
-              className={`gallery-item ${inView ? "reveal" : "reveal"} `}
+              className={`gallery-item ${loading ? "" : "reveal"} `}
             >
               <img
                 // ref={imgRef}
@@ -89,9 +106,15 @@ const PraGoView = () => {
             </span>
           ))}
         </div>
-        <div ref={pageEndRef} className="loading inline">
-          {loading && "Loading..."}
+        <div ref={pageEndRef}></div>
+        <div className="container loading-container">
+          {loading ? (
+            <div className="loading inline">Loading</div>
+          ) : (
+            <div className="loading inline no-animate">Thats All</div>
+          )}
         </div>
+
         {selectedPhoto && <Modal photo={selectedPhoto} onClose={closeModal} />}
       </div>
     </Layout>
@@ -99,22 +122,3 @@ const PraGoView = () => {
 };
 
 export default PraGoView;
-
-// const ImageWithReveal = ({ photo, onClick }) => {
-//   const { imgRef, inView } = useInView({
-//     triggerOnce: true,
-//     threshold: 0.6,
-//   });
-
-//   return (
-//     <span className={`gallery-item ${inView ? "reveal" : "reveal"} `}>
-//       <img
-//         ref={imgRef}
-//         src={photo.src.large}
-//         alt={photo.alt}
-//         loading="lazy"
-//         onClick={onClick}
-//       />
-//     </span>
-//   );
-// };

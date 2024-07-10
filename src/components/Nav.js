@@ -13,7 +13,7 @@ const Nav = ({ scroll }) => {
   useEffect(() => {
     let scrollHeight = 0;
     if (scroll) {
-      scrollHeight = 0.4;
+      scrollHeight = 0.2;
       setIsVisible(false);
     }
     const handleScroll = () => {
