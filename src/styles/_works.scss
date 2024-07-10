@@ -3,6 +3,7 @@
   background-color: var(--color-dark);
   color: #fff;
   padding: 100px 0 250px;
+  position: relative;
   .subTitle {
     @include media(phone) {
       margin-bottom: 120px;

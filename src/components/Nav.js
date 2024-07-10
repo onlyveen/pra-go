@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import veenImage from "@images/veen.png";
 
-const Nav = () => {
-  const [isVisible, setIsVisible] = useState(false);
+const Nav = ({ scroll }) => {
+  const [isVisible, setIsVisible] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -11,9 +11,14 @@ const Nav = () => {
   };
 
   useEffect(() => {
+    let scrollHeight = 0;
+    if (scroll) {
+      scrollHeight = 0.4;
+      setIsVisible(false);
+    }
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      if (scrollPosition > window.innerHeight * 0.4) {
+      if (scrollPosition > window.innerHeight * scrollHeight) {
         setIsVisible(true);
       } else {
         setIsVisible(false);

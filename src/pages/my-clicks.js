@@ -27,7 +27,6 @@ const PraGoView = () => {
   const loadMorePhotos = useCallback(async () => {
     setLoading(true);
     const newPhotos = await fetchPhotosFromCollection(collectionId, page);
-    console.log("Loaded Photos:", newPhotos);
     setPhotos((prevPhotos) => [...prevPhotos, ...newPhotos]);
     setLoading(false);
   }, [page]);

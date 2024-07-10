@@ -1,6 +1,7 @@
 .writings-section {
   background-color: var(--color-dark);
   color: var(--text-bright);
+  position: relative;
   padding: 100px 0 250px;
   @include media(phone) {
     .container {
