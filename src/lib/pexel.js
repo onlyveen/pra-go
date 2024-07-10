@@ -8,7 +8,6 @@ export const fetchPhotosFromCollection = async (
   page = 1,
   perPage = 20
 ) => {
-  console.log("loading", `${PEXELS_API_URL}collections/${collectionId}`);
   try {
     const response = await axios.get(
       `${PEXELS_API_URL}collections/${collectionId}`,
