@@ -4,6 +4,7 @@ import { useInView } from "react-intersection-observer";
 import Layout from "@components/Layout";
 import { fetchPhotosFromCollection } from "@/lib/pexel";
 import Modal from "@/lib/Modal";
+import Head from "next/head";
 const collectionId = "70kt1eu";
 
 const PraGoView = () => {
@@ -43,6 +44,21 @@ const PraGoView = () => {
 
   return (
     <Layout>
+      <Head>
+        <title>PraGoView - Praveen Gorakala's Photography</title>
+
+        <meta
+          name="description"
+          content="Explore the photography collection of Praveen Gorakala on PraGoView."
+        />
+
+        <meta
+          name="keywords"
+          content="Praveen Gorakala, Photography, PraGoView, Pexels Collection"
+        />
+
+        <meta name="author" content="Praveen Gorakala" />
+      </Head>
       <div className="gallery">
         <div className="container desc">
           <h1>#PraGoView</h1>
