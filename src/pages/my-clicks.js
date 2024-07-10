@@ -97,7 +97,7 @@ const PraGoView = () => {
             >
               <img
                 // ref={imgRef}
-                src={photo.src.large}
+                src={photo.src.medium}
                 alt={photo.alt}
                 loading="lazy"
                 // onClick={onClick}

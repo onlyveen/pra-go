@@ -5,23 +5,25 @@
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(15px);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 999999;
   .modal {
     background: white;
-    padding: 12px;
-    border-radius: 12px;
     position: relative;
     clip-path: polygon(0 0, 100% 0%, 100% 0, 0 0);
     animation: reveal 0.6s forwards;
     min-height: 20vh;
     min-width: 20vw;
+    border-radius: 12px;
   }
   .image {
+    border-radius: 12px;
     max-width: 80vw;
     max-height: 80vh;
+    display: block;
     animation: zoom-out 1s forwards;
   }
   .close {

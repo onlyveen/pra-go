@@ -20,7 +20,7 @@ const Modal = ({ photo, onClose }) => {
     <div id="modal-overlay" className="overlay">
       <div className="modal">
         <span className="close" onClick={onClose}></span>
-        <img src={photo.src.original} alt={photo.alt} className="image" />
+        <img src={photo.src.large2x} alt={photo.alt} className="image" />
       </div>
     </div>
   );
