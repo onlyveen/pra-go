@@ -56,8 +56,18 @@ const Work = () => {
     ],
   };
 
-  if (loading) return <div className="loading">Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
+  if (loading)
+    return (
+      <div className="work-section" id="my-work">
+        <div className="loading">Loading...</div>
+      </div>
+    );
+  if (error)
+    return (
+      <div className="work-section" id="my-work">
+        <div>Error: {error.message}</div>
+      </div>
+    );
 
   return (
     <div className="work-section" id="my-work">

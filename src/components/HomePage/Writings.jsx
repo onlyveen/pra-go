@@ -29,8 +29,18 @@ const Writings = () => {
       });
   }, []);
 
-  if (loading) return <div className="loading">Loading</div>;
-  if (error) return <div>Error: {error.message}</div>;
+  if (loading)
+    return (
+      <div className="writings-section" id="my-writings">
+        <div className="loading">Loading...</div>
+      </div>
+    );
+  if (error)
+    return (
+      <div className="writings-section" id="my-writings">
+        <div>Error: {error.message}</div>
+      </div>
+    );
 
   return (
     <div className="writings-section" id="my-writings">

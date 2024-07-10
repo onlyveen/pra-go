@@ -69,12 +69,9 @@ const PraGoView = () => {
         </div>
         <div className="container grid">
           {photos.map((photo) => (
-            <img
+            <ImageWithReveal
               key={photo.id}
-              src={photo.src.large}
-              alt={photo.alt}
-              loading="lazy"
-              className="gallery-item"
+              photo={photo}
               onClick={() => handlePhotoClick(photo)}
             />
           ))}
@@ -89,3 +86,22 @@ const PraGoView = () => {
 };
 
 export default PraGoView;
+
+const ImageWithReveal = ({ photo, onClick }) => {
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  return (
+    <span className={`gallery-item ${inView ? "reveal" : ""}`}>
+      <img
+        ref={ref}
+        src={photo.src.large}
+        alt={photo.alt}
+        loading="lazy"
+        onClick={onClick}
+      />
+    </span>
+  );
+};
