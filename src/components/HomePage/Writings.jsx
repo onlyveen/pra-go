@@ -84,7 +84,7 @@ const SampleNextArrow = (props) => {
       style={{ ...style, display: "block" }}
       onClick={onClick}
     >
-      <Image src={next} alt="Slick Next" />
+      <Image loading="lazy" src={next} alt="Slick Next" />
     </div>
   );
 };
@@ -97,7 +97,7 @@ const SamplePrevArrow = (props) => {
       style={{ ...style, display: "block" }}
       onClick={onClick}
     >
-      <Image src={prev} alt="Slick Prev" />
+      <Image loading="lazy" src={prev} alt="Slick Prev" />
     </div>
   );
 };

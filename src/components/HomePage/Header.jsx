@@ -44,8 +44,13 @@ const Header = () => {
       </div>
       <div className="abs">
         {/* <h2>DESIGNER</h2> */}
-        <Image src={veenBabu} alt="Praveen Gorakala's Image" />
-        <Image className="h2" src={designerText} alt="Designer" />
+        <Image loading="lazy" src={veenBabu} alt="Praveen Gorakala's Image" />
+        <Image
+          loading="lazy"
+          className="h2"
+          src={designerText}
+          alt="Designer"
+        />
       </div>
     </div>
   );

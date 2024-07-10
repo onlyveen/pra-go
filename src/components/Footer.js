@@ -20,7 +20,7 @@ const Footer = () => {
           </p>
         </div>
         <a href="https://calendly.com/onlyveen" target="_blank" className="btn">
-          Let's Talk <Image src={arw} alt="arrow-angle" />
+          Let's Talk <Image loading="lazy" src={arw} alt="arrow-angle" />
         </a>
       </div>
       <div className="top-lower">
@@ -28,16 +28,16 @@ const Footer = () => {
           <p>© {currentYear} All rights reserved.</p>
           <div className="socials">
             <a target="_blank" href="https://github.com/onlyveen">
-              <Image src={github} alt="Github" />
+              <Image loading="lazy" src={github} alt="Github" />
             </a>
             <a target="_blank" href="https://www.behance.net/onlyveen">
-              <Image src={behance} alt="behance" />
+              <Image loading="lazy" src={behance} alt="behance" />
             </a>
             <a target="_blank" href="https://instagram.com/onlyveen_">
-              <Image src={instagram} alt="instagram" />
+              <Image loading="lazy" src={instagram} alt="instagram" />
             </a>
             <a target="_blank" href="https://linkedin.com/in/onlyveen/">
-              <Image src={linkedin} alt="linkedin" />
+              <Image loading="lazy" src={linkedin} alt="linkedin" />
             </a>
           </div>
         </div>

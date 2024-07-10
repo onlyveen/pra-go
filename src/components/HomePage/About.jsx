@@ -17,15 +17,15 @@ const About = () => {
         </p>
         <div className="icons">
           <span>
-            <Image src={branding} alt="Branding" />
+            <Image loading="lazy" src={branding} alt="Branding" />
             <small>Branding</small>
           </span>
           <span>
-            <Image src={ui} alt="UX & UI" />
+            <Image loading="lazy" src={ui} alt="UX & UI" />
             <small>UX & UI</small>
           </span>
           <span>
-            <Image src={web} alt="Web Develepment" />
+            <Image loading="lazy" src={web} alt="Web Develepment" />
             <small>Web Dev</small>
           </span>
         </div>

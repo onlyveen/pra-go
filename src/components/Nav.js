@@ -30,7 +30,7 @@ const Nav = () => {
   return (
     <nav className={`navBar ${isVisible ? "visible" : ""}`}>
       <a href="/#" className="logo">
-        <Image src={veenImage} alt="Veen Logo" width={40} />
+        <Image loading="lazy" src={veenImage} alt="Veen Logo" width={40} />
         <span>
           Pra<b>VeeN</b>
         </span>
@@ -56,6 +56,9 @@ const Nav = () => {
         </li>
         <li>
           <a href="/#my-writings">My Writings</a>
+        </li>
+        <li>
+          <a href="/my-clicks">My Clicks</a>
         </li>
         <li>
           <a
