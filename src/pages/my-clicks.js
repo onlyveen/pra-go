@@ -12,7 +12,7 @@ const PraGoView = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [selectedPhoto, setSelectedPhoto] = useState(null);
-  const { ref, inView } = useInView({
+  const { pageEndRef, inView } = useInView({
     triggerOnce: false,
   });
 
@@ -39,7 +39,7 @@ const PraGoView = () => {
 
   useEffect(() => {
     loadMorePhotos();
-  }, [loadMorePhotos]);
+  }, [loadMorePhotos, page]);
 
   return (
     <Layout>
@@ -69,14 +69,27 @@ const PraGoView = () => {
         </div>
         <div className="container grid">
           {photos.map((photo) => (
-            <ImageWithReveal
+            // <ImageWithReveal
+            //   key={photo.id}
+            //   photo={photo}
+            //   onClick={() => handlePhotoClick(photo)}
+            // />
+            <span
               key={photo.id}
-              photo={photo}
-              onClick={() => handlePhotoClick(photo)}
-            />
+              className={`gallery-item ${inView ? "reveal" : "reveal"} `}
+            >
+              <img
+                // ref={imgRef}
+                src={photo.src.large}
+                alt={photo.alt}
+                loading="lazy"
+                // onClick={onClick}
+                onClick={() => handlePhotoClick(photo)}
+              />
+            </span>
           ))}
         </div>
-        <div ref={ref} className="loading inline">
+        <div ref={pageEndRef} className="loading inline">
           {loading && "Loading..."}
         </div>
         {selectedPhoto && <Modal photo={selectedPhoto} onClose={closeModal} />}
@@ -87,21 +100,21 @@ const PraGoView = () => {
 
 export default PraGoView;
 
-const ImageWithReveal = ({ photo, onClick }) => {
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
+// const ImageWithReveal = ({ photo, onClick }) => {
+//   const { imgRef, inView } = useInView({
+//     triggerOnce: true,
+//     threshold: 0.6,
+//   });
 
-  return (
-    <span className={`gallery-item ${inView ? "reveal" : ""} `}>
-      <img
-        ref={ref}
-        src={photo.src.large}
-        alt={photo.alt}
-        loading="lazy"
-        onClick={onClick}
-      />
-    </span>
-  );
-};
+//   return (
+//     <span className={`gallery-item ${inView ? "reveal" : "reveal"} `}>
+//       <img
+//         ref={imgRef}
+//         src={photo.src.large}
+//         alt={photo.alt}
+//         loading="lazy"
+//         onClick={onClick}
+//       />
+//     </span>
+//   );
+// };
