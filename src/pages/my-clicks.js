@@ -11,8 +11,11 @@ const PraGoView = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [hasMore, setHasMore] = useState(true);
+  const [photoCount, setPhotoCount] = useState(0);
   const [selectedPhoto, setSelectedPhoto] = useState(null);
   const pageEndRef = useRef(null);
+  const photoRefs = useRef([]); // Array of refs for each photo container
+
   const photosCache = useRef({}); // Cache object to store fetched photos
 
   const handlePhotoClick = (photo) => {
@@ -63,6 +66,44 @@ const PraGoView = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [page, loadMorePhotos]);
 
+  useEffect(() => {
+    const photoCountScroll = () => {
+      console.log("photoCount", photoCount);
+      console.log("photoRefs", photoRefs);
+
+      photoRefs?.current?.map((photo, index) => {
+        const photoRect = photo.getBoundingClientRect();
+        const scrollY = window.scrollY;
+        const windowHeight = window.innerHeight;
+
+        const isVisible =
+          // photoRect.top >= 0 &&
+          photoRect.top <= windowHeight + photoRect.height / 2;
+        photo.classList.toggle("reveal", isVisible);
+      });
+
+      // photos.forEach((index) => {
+      //   const photoElement = photoRefs.current[index];
+      //   const photoRect = photoElement.getBoundingClientRect();
+      //   const isVisible = photoRect.top >= scrollY;
+      //   const scrollY = window.scrollY;
+      //   console.log(photoRect.top, scrollY);
+      //   if (photoElement) {
+      //     //  && photoRect.top <= windowHeight + photoRect.height;
+      //     if (isVisible) {
+      //       setPhotoCount(index);
+      //     }
+      //   }
+      // });
+    };
+
+    window.addEventListener("scroll", photoCountScroll);
+
+    return () => {
+      window.removeEventListener("scroll", photoCountScroll);
+    };
+  }, []);
+
   return (
     <Layout>
       <Head>
@@ -90,17 +131,16 @@ const PraGoView = () => {
           </p>
         </div>
         <div className="container grid">
-          {photos.map((photo) => (
+          {photos.map((photo, index) => (
             <span
               key={photo.id}
-              className={`gallery-item ${loading ? "" : "reveal"} `}
+              className={`gallery-item ${index > photoCount ? "" : "reveal"}`}
+              ref={(el) => (photoRefs.current[index] = el)}
             >
               <img
-                // ref={imgRef}
                 src={photo.src.medium}
                 alt={photo.alt}
                 loading="lazy"
-                // onClick={onClick}
                 onClick={() => handlePhotoClick(photo)}
               />
             </span>
