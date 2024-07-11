@@ -15,14 +15,14 @@
     position: relative;
     clip-path: polygon(0 0, 100% 0%, 100% 0, 0 0);
     animation: reveal 0.6s forwards;
-    min-height: 20vh;
-    min-width: 20vw;
+    height: 80vh;
+    width: auto;
     border-radius: 12px;
   }
-  .image {
+  img {
     border-radius: 12px;
-    max-width: 80vw;
-    max-height: 80vh;
+    width: auto !important;
+    height: 100% !important;
     display: block;
     animation: zoom-out 1s forwards;
   }

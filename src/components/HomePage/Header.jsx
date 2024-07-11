@@ -2,8 +2,17 @@ import React from "react";
 import Image from "next/image";
 import veenBabu from "@images/header/praveen-gorakala.png";
 import designerText from "@images/header/designer-text.svg";
+import TypingText from "../TypingText";
 
 const Header = () => {
+  const words = [
+    "🎯 Branding Expert",
+    "💡 User Experience Designer",
+    "🎨 Visual Designer",
+    "✨ User Interface Designer",
+    "🕸️ Web Developer",
+    "📸 Photoholic",
+  ];
   return (
     <div className="header">
       <div className="container">
@@ -14,12 +23,13 @@ const Header = () => {
               <br />
               I'm Pra<span className="high">VeeN</span> Gorakala
             </span>
-            <span className="pills">
+            <TypingText words={words} typingSpeed={120} deletingSpeed={60} />
+            {/* <span className="pills">
               <small>Branding</small>
               <small>UX</small>
               <small>UI</small>
               <small>Web Dev</small>
-            </span>
+            </span> */}
           </p>
           <p className="desig">
             <span className="high">*</span> Principal Designer

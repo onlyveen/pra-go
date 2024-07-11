@@ -30,8 +30,6 @@ const PraGoView = () => {
     if (!hasMore) return; // Stop fetching if no more pages
 
     setLoading(true);
-    console.log("new page load request", page);
-    console.log("loading", loading);
 
     const cachedPhotos = photosCache.current[page];
     if (cachedPhotos) {
@@ -78,12 +76,9 @@ const PraGoView = () => {
 
     photoRefs?.current?.map((photo, index) => {
       const photoRect = photo.getBoundingClientRect();
-      const scrollY = window.scrollY;
       const windowHeight = window.innerHeight;
 
-      const isVisible =
-        // photoRect.top >= 0 &&
-        photoRect.top <= windowHeight + photoRect.height / 2;
+      const isVisible = photoRect.top <= windowHeight + photoRect.height / 2;
       photo.classList.toggle("reveal", isVisible);
     });
   };

@@ -1,4 +1,5 @@
 // components/Modal.js
+import Image from "next/image";
 import React, { useEffect } from "react";
 
 const Modal = ({ photo, onClose }) => {
@@ -20,7 +21,12 @@ const Modal = ({ photo, onClose }) => {
     <div id="modal-overlay" className="overlay">
       <div className="modal">
         <span className="close" onClick={onClose}></span>
-        <img src={photo.src.large2x} alt={photo.alt} className="image" />
+        <img
+          src={photo.src.large}
+          alt={photo.alt}
+          className="image"
+          loading="lazy"
+        />
       </div>
     </div>
   );

@@ -40,19 +40,35 @@
       @include media(phone) {
         font-size: px;
       }
+      .typing-text {
+        font-size: 16px;
+        span {
+          font-weight: 400;
+        }
+      }
+
       .pills {
         display: flex;
-        gap: 8px;
+        gap: 12px;
         small {
           display: flex;
-          padding: 4px 12px;
           justify-content: center;
           align-items: center;
-          gap: 23px;
-          font-size: 12px;
+          gap: 12px;
           font-weight: 400;
+          font-size: 16px;
           border-radius: 32px;
-          border: 1px solid var(--text-dark);
+          opacity: 0.5;
+          & + small {
+            &:before {
+              content: "";
+              display: block;
+              height: 6px;
+              width: 6px;
+              background: var(--text-dark);
+              border-radius: 10px;
+            }
+          }
         }
       }
     }
@@ -130,5 +146,16 @@
         }
       }
     }
+  }
+}
+
+.cursor {
+  opacity: 1;
+  animation: blink 0.7s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
   }
 }
