@@ -64,7 +64,7 @@ const PraGoView = () => {
     window.addEventListener("scroll", handleScroll);
     const scrollTimer = setTimeout(() => {
       photoCountScroll();
-    }, 200);
+    }, 1000);
 
     return () => {
       clearTimeout(scrollTimer);
