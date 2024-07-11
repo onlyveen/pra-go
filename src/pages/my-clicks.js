@@ -62,40 +62,34 @@ const PraGoView = () => {
   useEffect(() => {
     loadMorePhotos();
     window.addEventListener("scroll", handleScroll);
+    const scrollTimer = setTimeout(() => {
+      photoCountScroll();
+    }, 200);
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      clearTimeout(scrollTimer);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, [page, loadMorePhotos]);
 
+  const photoCountScroll = () => {
+    console.log("photoCount", photoCount);
+    console.log("photoRefs", photoRefs);
+
+    photoRefs?.current?.map((photo, index) => {
+      const photoRect = photo.getBoundingClientRect();
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+
+      const isVisible =
+        // photoRect.top >= 0 &&
+        photoRect.top <= windowHeight + photoRect.height / 2;
+      photo.classList.toggle("reveal", isVisible);
+    });
+  };
+
   useEffect(() => {
-    const photoCountScroll = () => {
-      console.log("photoCount", photoCount);
-      console.log("photoRefs", photoRefs);
-
-      photoRefs?.current?.map((photo, index) => {
-        const photoRect = photo.getBoundingClientRect();
-        const scrollY = window.scrollY;
-        const windowHeight = window.innerHeight;
-
-        const isVisible =
-          // photoRect.top >= 0 &&
-          photoRect.top <= windowHeight + photoRect.height / 2;
-        photo.classList.toggle("reveal", isVisible);
-      });
-
-      // photos.forEach((index) => {
-      //   const photoElement = photoRefs.current[index];
-      //   const photoRect = photoElement.getBoundingClientRect();
-      //   const isVisible = photoRect.top >= scrollY;
-      //   const scrollY = window.scrollY;
-      //   console.log(photoRect.top, scrollY);
-      //   if (photoElement) {
-      //     //  && photoRect.top <= windowHeight + photoRect.height;
-      //     if (isVisible) {
-      //       setPhotoCount(index);
-      //     }
-      //   }
-      // });
-    };
+    photoCountScroll();
 
     window.addEventListener("scroll", photoCountScroll);
 
