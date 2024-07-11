@@ -53,7 +53,6 @@ const Header = () => {
         </div>
       </div>
       <div className="abs">
-        {/* <h2>DESIGNER</h2> */}
         <Image loading="lazy" src={veenBabu} alt="Praveen Gorakala's Image" />
         <Image
           loading="lazy"

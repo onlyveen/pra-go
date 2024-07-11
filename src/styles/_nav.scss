@@ -1,7 +1,4 @@
 .navBar {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(21, 21, 21, 0.05);
-  backdrop-filter: blur(25px);
   display: flex;
   padding: 8px 16px;
   align-items: center;
@@ -12,10 +9,20 @@
   right: 0;
   top: 0;
   z-index: 10000;
-  transform: translateY(-100%);
+  // transform: translateY(-100%);
   transition: all 0.35s;
+  @include media(phone) {
+    transform: translateY(0%);
+    top: auto;
+    bottom: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(21, 21, 21, 0.05);
+    backdrop-filter: blur(25px);
+  }
   &.visible {
-    transform: translateY(0);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(21, 21, 21, 0.05);
+    backdrop-filter: blur(25px);
   }
   .logo {
     border-radius: 64px;
@@ -112,7 +119,7 @@
       flex-direction: column;
       position: absolute;
       right: 0;
-      top: 0;
+      bottom: 0;
       z-index: -1;
       background: var(--color-primary);
       width: 100%;
@@ -123,7 +130,7 @@
       overflow: hidden;
       &.open {
         height: 100vh;
-        padding: 200px 32px 32px;
+        padding: 200px 32px 200px;
       }
 
       li {

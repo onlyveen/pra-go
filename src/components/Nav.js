@@ -3,7 +3,7 @@ import Image from "next/image";
 import veenImage from "@images/veen.png";
 
 const Nav = ({ scroll }) => {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -12,10 +12,7 @@ const Nav = ({ scroll }) => {
 
   useEffect(() => {
     let scrollHeight = 0;
-    if (scroll) {
-      scrollHeight = 0.2;
-      setIsVisible(false);
-    }
+
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       if (scrollPosition > window.innerHeight * scrollHeight) {

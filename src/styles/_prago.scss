@@ -35,7 +35,7 @@
   }
   .grid {
     // max-width: 50%;
-    column-count: 3;
+    column-count: 4;
     column-gap: 24px;
     @include media(tablet-portrait) {
       column-count: 2;

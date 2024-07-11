@@ -34,10 +34,10 @@ const TypingText = ({ words, typingSpeed = 150, deletingSpeed = 100 }) => {
   }, [currentText, isDeleting, index, words, typingSpeed, deletingSpeed]);
 
   return (
-    <div className="typing-text">
+    <span className="typing-text">
       {currentText}
       <span className="cursor">|</span>
-    </div>
+    </span>
   );
 };
 

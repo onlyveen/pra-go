@@ -189,6 +189,11 @@ button,
     width: 100%;
     margin: 30px;
   }
+  &.fill-loading {
+    height: 100%;
+    width: 100%;
+    font-size: 24px;
+  }
   &.no-animate {
     color: var(--color-black);
     display: flex;

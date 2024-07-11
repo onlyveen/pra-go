@@ -1,9 +1,9 @@
 .header {
-  padding: 100px 0 0;
+  padding: 200px 0 0;
   position: relative;
   z-index: 1;
   @include media(phone) {
-    padding: 50px 0 0;
+    padding: 100px 0 0;
   }
 
   .container {
@@ -41,6 +41,7 @@
         font-size: px;
       }
       .typing-text {
+        height: 25px;
         font-size: 16px;
         span {
           font-weight: 400;
@@ -87,7 +88,7 @@
     }
   }
   .abstract {
-    margin: 32px 0 64px;
+    margin: 24px 0 48px;
     width: 70%;
     font-size: 18px;
     line-height: 1.6;
@@ -100,7 +101,10 @@
   .actions {
     display: flex;
     gap: 12px;
+    // margin-top: 64px;
     @include media(phone) {
+      margin-top: 24px;
+      padding-bottom: 64px;
       a {
         flex: 1 0 0;
       }
