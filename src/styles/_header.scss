@@ -38,7 +38,7 @@
       flex-direction: column;
       gap: 12px;
       @include media(phone) {
-        font-size: px;
+        font-size: 24px;
       }
       .typing-text {
         height: 25px;
@@ -95,11 +95,11 @@
     @include media(phone) {
       width: 100%;
       font-size: 14px;
-      margin: 24px 0 32px;
+      margin: 0 0 32px;
     }
   }
   .actions {
-    display: flex;
+    display: none;
     gap: 12px;
     // margin-top: 64px;
     @include media(phone) {
@@ -113,6 +113,9 @@
   .abs {
     position: relative;
     margin-top: 100px;
+    @include media(phone) {
+      margin-top: 50px;
+    }
     .h2 {
       position: relative;
       right: 0;
@@ -140,13 +143,14 @@
       z-index: 1;
       &:first-child {
         width: 45% !important;
-        @include media(tablet-landscape) {
-          width: 60% !important;
-        }
+
         @include media(phone) {
           right: 0;
           left: 0;
           margin: auto;
+        }
+        @include media(breakpoint-md-phone) {
+          width: 60% !important;
         }
       }
     }
