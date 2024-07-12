@@ -19,6 +19,16 @@
     width: auto;
     min-width: 30vw;
     border-radius: 12px;
+    max-width: 90vw;
+    overflow: auto;
+    @include media(tablet-portrait) {
+      height: auto;
+      width: 90vw;
+      min-width: none;
+      min-height: 30vh;
+      max-height: 90vh;
+      overflow: auto;
+    }
   }
   .loading {
     z-index: 1;
@@ -32,6 +42,10 @@
     animation: zoom-out 1s forwards;
     position: relative;
     z-index: 2;
+    @include media(tablet-portrait) {
+      height: auto !important;
+      width: 100% !important;
+    }
   }
   .close {
     border-radius: 0 12px 0 0;
