@@ -33,6 +33,15 @@
     gap: 8px;
     padding: 12px;
     padding-right: 24px;
+    &:hover {
+      animation: jigelbg 0.5s steps(1, start) infinite;
+      span {
+        animation: jigelspan 0.5s steps(1, start) infinite;
+        b {
+          animation: jigelb 0.5s steps(1, start) infinite;
+        }
+      }
+    }
     @include media(phone) {
       img {
         height: 32px;
@@ -150,5 +159,48 @@
         }
       }
     }
+  }
+}
+
+@keyframes jigelbg {
+  0% {
+    background: rgba(243, 242, 238, 0.9);
+  }
+  33% {
+    background: #ff4f00;
+  }
+  66% {
+    background: #151515;
+  }
+  100% {
+    background: rgba(243, 242, 238, 0.9);
+  }
+}
+@keyframes jigelspan {
+  0% {
+    color: #151515;
+  }
+  33% {
+    color: #151515;
+  }
+  66% {
+    color: #ffffff;
+  }
+  100% {
+    color: #151515;
+  }
+}
+@keyframes jigelb {
+  0% {
+    color: #ff4f00;
+  }
+  33% {
+    color: #ffffff;
+  }
+  66% {
+    color: #ff4f00;
+  }
+  100% {
+    color: #ff4f00;
   }
 }
