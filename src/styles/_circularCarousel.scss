@@ -9,6 +9,7 @@
   border-radius: 50%;
   border: 2px solid var(--color-white); /* Optional, for visual reference */
   transition: transform 0.1s linear;
+  animation: rotate 60s infinite linear;
   @include media(phone) {
     height: 140vw;
     width: 140vw;
@@ -44,8 +45,27 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    animation: rotate-inv 60s infinite linear;
     img {
       height: 50px;
     }
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate-inv {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0);
   }
 }
