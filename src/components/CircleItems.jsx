@@ -13,7 +13,7 @@ const CircleItems = ({ items }) => {
       const scrollY = window.scrollY;
       const deltaY = scrollY - lastScrollY;
       const isMobile = window.innerWidth <= 768;
-      const speed = isMobile ? 2.5 : 2;
+      const speed = isMobile ? 1.5 : 1;
 
       setRotation((prevRotation) => prevRotation + deltaY * 0.2 * speed);
       lastScrollY = scrollY;
