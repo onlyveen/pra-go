@@ -1,0 +1,51 @@
+/* components/CircleItems.module.css */
+
+.circle {
+  position: absolute;
+  right: -250px;
+  top: calc(50% - 250px);
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  border: 2px solid var(--color-white); /* Optional, for visual reference */
+  transition: transform 0.1s linear;
+  @include media(phone) {
+    height: 140vw;
+    width: 140vw;
+    right: -20vw;
+    left: -20vw;
+    margin: auto;
+    bottom: -100vh;
+    // top: auto;
+  }
+}
+
+.circleItem {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: 0 0; /* Adjust transform-origin for better positioning */
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  // background: #f00;
+  border: solid 1px var(--color-white);
+  background: var(--color-dark);
+  color: #fff;
+
+  p {
+    font-size: 14px;
+    margin: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      height: 50px;
+    }
+  }
+}

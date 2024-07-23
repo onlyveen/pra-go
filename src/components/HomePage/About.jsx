@@ -3,8 +3,34 @@ import Image from "next/image";
 import branding from "@images/about/branding.svg";
 import ui from "@images/about/ui-ux.svg";
 import web from "@images/about/web-dev.svg";
+import CircleItems from "@components/CircleItems";
+import figma from "@images/about/figma.svg";
+import ai from "@images/about/ai.svg";
+import ps from "@images/about/ps.svg";
+import xd from "@images/about/xd.svg";
+import js from "@images/about/js.svg";
+import vscode from "@images/about/vscode.svg";
+import react from "@images/about/react.svg";
+import css from "@images/about/css.svg";
+import html from "@images/about/html.svg";
+import nextjs from "@images/about/nextjs.svg";
+import pr from "@images/about/pr.svg";
 
 const About = () => {
+  const items = [
+    { name: "Figma", src: figma },
+    { name: "Adobe Illustrator", src: ai },
+    { name: "Adobe Photoshop", src: ps },
+    { name: "Adobe XD", src: xd },
+    { name: "Java Script", src: js },
+    { name: "Visual Studio Code", src: vscode },
+    { name: "React", src: react },
+    { name: "CSS", src: css },
+    { name: "HTML", src: html },
+    { name: "Next JS", src: nextjs },
+    { name: "Adobe Premier Pro", src: pr },
+  ];
+
   return (
     <div className="about" id="about-me">
       <div className="container">
@@ -30,6 +56,7 @@ const About = () => {
           </span>
         </div>
       </div>
+      <CircleItems items={items} />
     </div>
   );
 };

@@ -3,25 +3,31 @@
   background: var(--color-dark);
   position: relative;
   z-index: 2;
+  overflow: hidden;
+  @include media(phone) {
+    padding-bottom: 150px;
+  }
   .container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     padding: 200px 0;
-    max-width: 50%;
+    // max-width: 50%;
+    padding-right: calc(300px);
     @include media(phone) {
       padding: 100px 0;
       max-width: 80%;
     }
     .subTitle {
-      margin-bottom: 0;
+      margin: 0;
+      text-align: left;
     }
   }
 
   p {
     font-size: 24px;
-    text-align: center;
+    // text-align: center;
     margin: 32px 0 64px;
     line-height: 1.6;
     @include media(phone) {
@@ -32,14 +38,15 @@
   .icons {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    gap: 32px;
     span {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 12px;
-      width: 100px;
+      // width: 100px;
       img {
         height: 64px;
         width: auto;
