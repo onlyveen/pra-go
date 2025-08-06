@@ -23,6 +23,9 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     background: rgba(21, 21, 21, 0.05);
     backdrop-filter: blur(25px);
+    img{
+      height: 50px;
+    }
   }
   .logo {
     border-radius: 64px;
@@ -31,8 +34,11 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 12px;
-    padding-right: 24px;
+    padding: 10px 25px;
+    img{
+      transition: all .35s;
+      width: auto;
+    }
     &:hover {
       animation: jigelbg 0.5s steps(1, start) infinite;
       span {
@@ -162,45 +168,45 @@
   }
 }
 
-@keyframes jigelbg {
-  0% {
-    background: rgba(243, 242, 238, 0.9);
-  }
-  33% {
-    background: #ff4f00;
-  }
-  66% {
-    background: #151515;
-  }
-  100% {
-    background: rgba(243, 242, 238, 0.9);
-  }
-}
-@keyframes jigelspan {
-  0% {
-    color: #151515;
-  }
-  33% {
-    color: #151515;
-  }
-  66% {
-    color: #ffffff;
-  }
-  100% {
-    color: #151515;
-  }
-}
-@keyframes jigelb {
-  0% {
-    color: #ff4f00;
-  }
-  33% {
-    color: #ffffff;
-  }
-  66% {
-    color: #ff4f00;
-  }
-  100% {
-    color: #ff4f00;
-  }
-}
+// @keyframes jigelbg {
+//   0% {
+//     background: rgba(243, 242, 238, 0.9);
+//   }
+//   33% {
+//     background: #ff4f00;
+//   }
+//   66% {
+//     background: #151515;
+//   }
+//   100% {
+//     background: rgba(243, 242, 238, 0.9);
+//   }
+// }
+// @keyframes jigelspan {
+//   0% {
+//     color: #151515;
+//   }
+//   33% {
+//     color: #151515;
+//   }
+//   66% {
+//     color: #ffffff;
+//   }
+//   100% {
+//     color: #151515;
+//   }
+// }
+// @keyframes jigelb {
+//   0% {
+//     color: #ff4f00;
+//   }
+//   33% {
+//     color: #ffffff;
+//   }
+//   66% {
+//     color: #ff4f00;
+//   }
+//   100% {
+//     color: #ff4f00;
+//   }
+// }

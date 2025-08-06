@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import veenImage from "@images/veen.png";
+import logo from "@images/logo.svg";
 
 const Nav = ({ scroll }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -32,10 +32,8 @@ const Nav = ({ scroll }) => {
   return (
     <nav className={`navBar ${isVisible ? "visible" : ""}`}>
       <a href="/#" className="logo">
-        <Image loading="lazy" src={veenImage} alt="Veen Logo" width={40} />
-        <span>
-          Pra<b>VeeN</b>
-        </span>
+        <Image loading="lazy" src={logo} alt="Veen Logo" height={90} />
+      
       </a>
       <div
         className={`burgerMenu ${menuOpen ? "open" : ""}`}
