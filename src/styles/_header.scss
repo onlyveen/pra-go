@@ -2,9 +2,14 @@
   padding: 200px 0 0;
   position: relative;
   z-index: 1;
-  @include media(phone) {
-    padding: 100px 0 0;
-  }
+   @include media(phone) {
+      padding-top: 50px;
+      min-height: calc(100vh - 69px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      
+    }
 
   .container {
     max-width: 60%;
@@ -12,6 +17,7 @@
 
     @include media(tablet-landscape) {
       max-width: 90%;
+      
     }
   }
   h1 {
@@ -38,13 +44,18 @@
       flex-direction: column;
       gap: 12px;
       @include media(phone) {
-        font-size: 24px;
+        font-size: 40px;
+        font-weight: bold;
+        text-align: center;
       }
       .typing-text {
         height: 25px;
         font-size: 16px;
         span {
           font-weight: 400;
+        }
+        @include media(phone) {
+          font-size: 18px;
         }
       }
 
@@ -94,8 +105,8 @@
     line-height: 1.6;
     @include media(phone) {
       width: 100%;
-      font-size: 14px;
       margin: 0 0 32px;
+      text-align: center;
     }
   }
   .actions {
@@ -143,11 +154,12 @@
       z-index: 1;
       &:first-child {
         width: 45% !important;
-
+        
         @include media(phone) {
           right: 0;
           left: 0;
           margin: auto;
+          width: 70% !important;
         }
         @include media(breakpoint-md-phone) {
           width: 60% !important;

@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import branding from "@images/about/branding.svg";
 import ui from "@images/about/ui-ux.svg";
 import web from "@images/about/web-dev.svg";
@@ -16,7 +18,17 @@ import html from "@images/about/html.svg";
 import nextjs from "@images/about/nextjs.svg";
 import pr from "@images/about/pr.svg";
 
+// Register ScrollTrigger plugin
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
 const About = () => {
+  const aboutRef = useRef(null);
+  const titleRef = useRef(null);
+  const textRef = useRef(null);
+  const iconsRef = useRef(null);
+  const circleRef = useRef(null);
   const items = [
     { name: "Figma", src: figma },
     { name: "Adobe Illustrator", src: ai },
@@ -31,17 +43,114 @@ const About = () => {
     { name: "Adobe Premier Pro", src: pr },
   ];
 
+  useEffect(() => {
+    // Intersection Observer for body background color change
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            document.body.classList.add("dark-section-view");
+          } else {
+            // Only remove if no other dark sections are in view
+            const otherSections = document.querySelectorAll('.work-section, .writings-section');
+            const anyOtherVisible = Array.from(otherSections).some(section => {
+              const rect = section.getBoundingClientRect();
+              const windowHeight = window.innerHeight;
+              return rect.top < windowHeight * 0.7 && rect.bottom > windowHeight * 0.3;
+            });
+            if (!anyOtherVisible) {
+              document.body.classList.remove("dark-section-view");
+            }
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+
+    if (aboutRef.current) {
+      observer.observe(aboutRef.current);
+    }
+
+    return () => {
+      if (aboutRef.current) {
+        observer.unobserve(aboutRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Animate section title
+      gsap.from(titleRef.current, {
+        scrollTrigger: {
+          trigger: aboutRef.current,
+          start: "top 80%",
+          end: "top 50%",
+          toggleActions: "play none none reverse",
+        },
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
+      });
+
+      // Animate paragraph text
+      gsap.from(textRef.current, {
+        scrollTrigger: {
+          trigger: aboutRef.current,
+          start: "top 75%",
+          toggleActions: "play none none reverse",
+        },
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        delay: 0.2,
+        ease: "power2.out",
+      });
+
+      // Animate icons with stagger
+      gsap.from(iconsRef.current?.children, {
+        scrollTrigger: {
+          trigger: iconsRef.current,
+          start: "top 85%",
+          toggleActions: "play none none reverse",
+        },
+        y: 50,
+        opacity: 0,
+        scale: 0.8,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: "back.out(1.7)",
+      });
+
+      // Animate circle items
+      gsap.from(circleRef.current, {
+        scrollTrigger: {
+          trigger: circleRef.current,
+          start: "top 80%",
+          toggleActions: "play none none reverse",
+        },
+        scale: 0.9,
+        opacity: 0,
+        duration: 1,
+        ease: "power2.out",
+      });
+    }, aboutRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <div className="about" id="about-me">
+    <div className="about" id="about-me" ref={aboutRef}>
       <div className="container">
-        <h2 className="subTitle">About Me</h2>
-        <p>
+        <h2 className="subTitle" ref={titleRef}>About Me</h2>
+        <p ref={textRef}>
           I thrive on turning ideas into Effective Solutions with captivating
           Visuals. My design philosophy revolves around minimalism, elegance,
           and impact. Whether it's crafting brand identities, designing
           intuitive interfaces, or building responsive websites, I'm all in.
         </p>
-        <div className="icons">
+        <div className="icons" ref={iconsRef}>
           <span>
             <Image loading="lazy" src={branding} alt="Branding" />
             <small>Branding</small>
@@ -56,7 +165,9 @@ const About = () => {
           </span>
         </div>
       </div>
-      <CircleItems items={items} />
+      
+        <CircleItems items={items} />
+      
     </div>
   );
 };

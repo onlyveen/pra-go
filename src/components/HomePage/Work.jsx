@@ -1,15 +1,60 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Airtable from "airtable";
 import Slider from "react-slick";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import prev from "@images/works/arrow-prev.svg";
 import next from "@images/works/arrow-next.svg";
 import Image from "next/image";
 import "slick-carousel/slick/slick.css";
 
+// Register ScrollTrigger plugin
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
 const Work = () => {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const workRef = useRef(null);
+  const titleRef = useRef(null);
+  const sliderRef = useRef(null);
+
+  useEffect(() => {
+    // Intersection Observer for body background color change
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            document.body.classList.add("dark-section-view");
+          } else {
+            // Only remove if no other dark sections are in view
+            const otherSections = document.querySelectorAll('.about, .writings-section');
+            const anyOtherVisible = Array.from(otherSections).some(section => {
+              const rect = section.getBoundingClientRect();
+              const windowHeight = window.innerHeight;
+              return rect.top < windowHeight * 0.7 && rect.bottom > windowHeight * 0.3;
+            });
+            if (!anyOtherVisible) {
+              document.body.classList.remove("dark-section-view");
+            }
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    if (workRef.current) {
+      observer.observe(workRef.current);
+    }
+
+    return () => {
+      if (workRef.current) {
+        observer.unobserve(workRef.current);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     const personalAccessToken =
@@ -32,6 +77,41 @@ const Work = () => {
         setLoading(false);
       });
   }, []);
+
+  // GSAP animations for Work section
+  useEffect(() => {
+    if (!loading && projects.length > 0) {
+      const ctx = gsap.context(() => {
+        // Animate section title
+        gsap.from(titleRef.current, {
+          scrollTrigger: {
+            trigger: workRef.current,
+            start: "top 80%",
+            toggleActions: "play none none reverse",
+          },
+          y: 50,
+          opacity: 0,
+          duration: 1,
+          ease: "power3.out",
+        });
+
+        // Animate slider
+        gsap.from(sliderRef.current, {
+          scrollTrigger: {
+            trigger: sliderRef.current,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+          y: 100,
+          opacity: 0,
+          duration: 1.2,
+          ease: "power2.out",
+        });
+      }, workRef);
+
+      return () => ctx.revert();
+    }
+  }, [loading, projects]);
 
   const settings = {
     dots: false,
@@ -70,12 +150,13 @@ const Work = () => {
     );
 
   return (
-    <div className="work-section" id="my-work">
+    <div className="work-section" id="my-work" ref={workRef}>
       <div className="container">
-        <h2 className="subTitle">My Work</h2>
+        <h2 className="subTitle" ref={titleRef}>My Work</h2>
       </div>
 
-      <Slider {...settings}>
+      <div ref={sliderRef}>
+        <Slider {...settings}>
         {projects.map((project, index) => (
           <a
             href={project.caseLink}
@@ -101,7 +182,8 @@ const Work = () => {
             </div>
           </a>
         ))}
-      </Slider>
+        </Slider>
+      </div>
     </div>
   );
 };

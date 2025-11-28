@@ -1,9 +1,12 @@
 /* styles.css */
 .work-section {
-  background-color: var(--color-dark);
+  // background-color: var(--color-dark);
   color: #fff;
-  padding: 100px 0 250px;
+  padding: 100px 0 ;
   position: relative;
+   @include media(phone) {
+      margin-bottom: 120px;
+    }
   .subTitle {
     @include media(phone) {
       margin-bottom: 120px;

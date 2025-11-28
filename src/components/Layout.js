@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import Nav from "./Nav"; // Make sure to create this component
 import Footer from "./Footer"; // Make sure to create this component
+import CursorBackground from "./CursorBackground";
 
 const Layout = ({ children, page }) => {
   const router = useRouter();
@@ -24,6 +25,7 @@ const Layout = ({ children, page }) => {
 
   return (
     <div className="page">
+      <CursorBackground />
       <Nav scroll={page === "home"} />
       <main>{children}</main>
       <Footer />
