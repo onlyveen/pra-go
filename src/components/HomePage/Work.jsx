@@ -30,12 +30,19 @@ const Work = () => {
             document.body.classList.add("dark-section-view");
           } else {
             // Only remove if no other dark sections are in view
-            const otherSections = document.querySelectorAll('.about, .writings-section');
-            const anyOtherVisible = Array.from(otherSections).some(section => {
-              const rect = section.getBoundingClientRect();
-              const windowHeight = window.innerHeight;
-              return rect.top < windowHeight * 0.7 && rect.bottom > windowHeight * 0.3;
-            });
+            const otherSections = document.querySelectorAll(
+              ".about, .writings-section"
+            );
+            const anyOtherVisible = Array.from(otherSections).some(
+              (section) => {
+                const rect = section.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+                return (
+                  rect.top < windowHeight * 0.7 &&
+                  rect.bottom > windowHeight * 0.3
+                );
+              }
+            );
             if (!anyOtherVisible) {
               document.body.classList.remove("dark-section-view");
             }
@@ -152,37 +159,40 @@ const Work = () => {
   return (
     <div className="work-section" id="my-work" ref={workRef}>
       <div className="container">
-        <h2 className="subTitle" ref={titleRef}>My Work</h2>
+        <h2 className="subTitle" ref={titleRef}>
+          My Work
+        </h2>
       </div>
-
-      <div ref={sliderRef}>
-        <Slider {...settings}>
-        {projects.map((project, index) => (
-          <a
-            href={project.caseLink}
-            key={index}
-            target="_blank"
-            className="project-card"
-          >
-            <div className="innerCard">
-              <div className="image-container">
-                {project.thumbnail && project.thumbnail[0] && (
-                  <img src={project.thumbnail[0].url} alt={project.name} />
-                )}
-              </div>
-              <h3>{project.name}</h3>
-              <div className="pills">
-                {project.scope &&
-                  project.scope.map((tag, idx) => (
-                    <small key={idx} className="tag">
-                      {tag}
-                    </small>
-                  ))}
-              </div>
-            </div>
-          </a>
-        ))}
-        </Slider>
+      <div className="slider-container">
+        <div ref={sliderRef}>
+          <Slider {...settings}>
+            {projects.map((project, index) => (
+              <a
+                href={project.caseLink}
+                key={index}
+                target="_blank"
+                className="project-card"
+              >
+                <div className="innerCard">
+                  <div className="image-container">
+                    {project.thumbnail && project.thumbnail[0] && (
+                      <img src={project.thumbnail[0].url} alt={project.name} />
+                    )}
+                  </div>
+                  <h3>{project.name}</h3>
+                  <div className="pills">
+                    {project.scope &&
+                      project.scope.map((tag, idx) => (
+                        <small key={idx} className="tag">
+                          {tag}
+                        </small>
+                      ))}
+                  </div>
+                </div>
+              </a>
+            ))}
+          </Slider>
+        </div>
       </div>
     </div>
   );

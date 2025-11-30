@@ -4,8 +4,14 @@
   color: #fff;
   padding: 100px 0 ;
   position: relative;
+  overflow: hidden;
    @include media(phone) {
       margin-bottom: 120px;
+      padding-top: 200px;
+      .slider-container{
+        margin-left: -9vh;
+        margin-right: -9vh;
+      }
     }
   .subTitle {
     @include media(phone) {
