@@ -32,7 +32,7 @@ const Nav = ({ scroll }) => {
   return (
     <nav className={`navBar ${isVisible ? "visible" : ""}`}>
       <a href="/#" className="logo">
-        <Image loading="lazy" src={logo} alt="Veen Logo" height={90} />
+        <Image loading="lazy" src={logo} alt="Veen Logo" height={70} />
       
       </a>
       <div

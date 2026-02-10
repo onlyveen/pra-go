@@ -54,6 +54,12 @@
         width: auto;
       }
     }
+       @include media(tablet) {
+      img {
+        height: 50px !important;
+        width: auto;
+      }
+    }
     span {
       text-transform: uppercase;
       font-family: var(--font-head);
@@ -122,6 +128,7 @@
 
     li {
       color: var(--text-dark);
+      white-space: nowrap;
     }
   }
   @include media(phone) {

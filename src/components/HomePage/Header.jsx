@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import veenBabu from "@images/header/praveen-gorakala.png";
-import designerText from "@images/header/designer-text.svg";
 import TypingText from "../TypingText";
 
 const Header = () => {
@@ -11,6 +10,8 @@ const Header = () => {
   const imageRef = useRef(null);
   const abstractRef = useRef(null);
   const actionsRef = useRef(null);
+  const designerTextRef = useRef(null);
+  const veenBabuImageRef = useRef(null);
 
   const words = [
     "🎯 Branding Expert",
@@ -23,17 +24,36 @@ const Header = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Create timeline for sequential animations
+      // Create timeline - all animations start together
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-      // Animate title with stagger effect on children
-      tl.from(titleRef.current?.children, {
-        y: 100,
+      // All elements animate in together, except image comes after DESIGNER text
+      tl.from(imageRef.current, {
+        y: 50,
         opacity: 0,
-        duration: 1,
-        stagger: 0.2,
+        duration: 0.8,
       })
-        // Animate abstract text
+        .from(
+          designerTextRef.current?.children,
+          {
+            opacity: 0,
+            filter: "blur(20px)",
+            duration: 0.8,
+            stagger: 0.08,
+            ease: "power2.out",
+          },
+          "<"
+        )
+        .from(
+          titleRef.current?.children,
+          {
+            y: 100,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.2,
+          },
+          "<"
+        )
         .from(
           abstractRef.current,
           {
@@ -41,9 +61,8 @@ const Header = () => {
             opacity: 0,
             duration: 0.8,
           },
-          "-=0.5"
+          "<"
         )
-        // Animate buttons
         .from(
           actionsRef.current?.children,
           {
@@ -52,17 +71,18 @@ const Header = () => {
             duration: 0.6,
             stagger: 0.15,
           },
-          "-=0.4"
+          "<"
         )
-        // Animate images container - simple fade in from bottom
         .from(
-          imageRef.current,
+          veenBabuImageRef.current,
           {
-            y: 50,
             opacity: 0,
-            duration: 0.8,
+            filter: "blur(30px)",
+            scale: 1.1,
+            duration: 1.2,
+            ease: "power2.out",
           },
-          "-=0.6"
+          "-=0.4"
         );
     }, headerRef);
 
@@ -109,13 +129,25 @@ const Header = () => {
         </div>
       </div>
       <div className="abs" ref={imageRef}>
-        <Image loading="lazy" src={veenBabu} alt="Praveen Gorakala's Image" />
         <Image
+          loading="lazy"
+          src={veenBabu}
+          alt="Praveen Gorakala's Image"
+          ref={veenBabuImageRef}
+        />
+        <h1 className="designer-text" ref={designerTextRef}>
+          {"DESIGNER".split("").map((letter, index) => (
+            <span key={index} style={{ display: "inline-block" }}>
+              {letter}
+            </span>
+          ))}
+        </h1>
+        {/* <Image
           loading="lazy"
           className="h2"
           src={designerText}
           alt="Designer"
-        />
+        /> */}
       </div>
     </div>
   );

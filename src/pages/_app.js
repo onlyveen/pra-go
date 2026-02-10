@@ -1,10 +1,22 @@
 // src/pages/_app.js
 import Head from "next/head";
+import { Anton } from "next/font/google";
 import "../styles/styles.scss"; // Import your global styles here
+
+const anton = Anton({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-anton",
+});
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
+      <style jsx global>{`
+        :root {
+          --font-anton: ${anton.style.fontFamily};
+        }
+      `}</style>
       <Component {...pageProps} />
       <Head>
         <title>Praveen Gorakala - Principal Designer</title>
