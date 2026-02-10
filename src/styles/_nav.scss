@@ -18,10 +18,9 @@
     left: auto;
     top: auto;
     bottom: 0;
-    height: 70px;
     width: 100vw;
     justify-content: flex-end;
-    
+    padding: 0 10px 10px 0;
   }
   &.visible {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -85,6 +84,10 @@
     gap: 10px;
     flex-wrap: wrap;
     transition: all 0.25s;
+    background: var(--text-dark);
+    box-shadow: 0 0 0 10px var(--text-dark);
+    border-radius: 5px 0 0 0;
+    
     span {
       height: 10px;
       width: 10px;
