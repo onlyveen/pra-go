@@ -3,8 +3,7 @@
   position: relative;
   z-index: 1;
   @include media(phone) {
-    padding-top: 50px;
-    min-height: calc(100vh - 69px);
+    padding-top: 100px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -103,7 +102,7 @@
     line-height: 1.6;
     @include media(phone) {
       width: 100%;
-      margin: 0 0 32px;
+      margin: 0 0 200px;
       text-align: center;
     }
   }
@@ -145,7 +144,7 @@
       text-align: center;
       display: flex;
       gap: 0px;
-      justify-content: space-between;
+      justify-content: center;
       
       span {
         font-family: var(--font-anton), sans-serif;

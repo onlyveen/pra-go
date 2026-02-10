@@ -12,31 +12,36 @@
   // transform: translateY(-100%);
   transition: all 0.35s;
   @include media(phone) {
-    transform: translateY(0%);
+    background: transparent;
+    backdrop-filter: none;
+    right: 0;
+    left: auto;
     top: auto;
     bottom: 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(21, 21, 21, 0.05);
-    backdrop-filter: blur(25px);
+    height: 70px;
+    width: 100vw;
+    justify-content: flex-end;
+    
   }
   &.visible {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     background: rgba(21, 21, 21, 0.05);
     backdrop-filter: blur(25px);
-    img{
+    @include media(phone) {
+      background: transparent;
+
+      backdrop-filter: none;
+    }
+    img {
       height: 50px;
     }
   }
   .logo {
-    border-radius: 64px;
-    background: rgba(243, 242, 238, 0.9);
-    backdrop-filter: blur(75px);
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 10px 25px;
-    img{
-      transition: all .35s;
+    img {
+      transition: all 0.35s;
       width: auto;
     }
     &:hover {
@@ -49,12 +54,9 @@
       }
     }
     @include media(phone) {
-      img {
-        height: 32px;
-        width: auto;
-      }
+      display: none;
     }
-       @include media(tablet) {
+    @include media(tablet) {
       img {
         height: 50px !important;
         width: auto;
@@ -87,7 +89,7 @@
       height: 10px;
       width: 10px;
       transition: all 0.25s;
-      background: var(--color-bg);
+      background: var(--color-primary);
       border-radius: 10px;
       transform-origin: center;
       border: solid 1px var(--text-dark);
@@ -101,6 +103,7 @@
         height: 5px;
         width: 20px;
         border: none;
+        background: var(--color-bg);
         &:nth-child(1),
         &:nth-child(4) {
           transform: rotate(45deg);
@@ -118,17 +121,18 @@
     padding: 0;
     list-style-type: none;
     display: flex;
-    border-radius: 64px;
-    background: rgba(243, 242, 238, 0.9);
-    backdrop-filter: blur(75px);
     display: flex;
-    padding: 8px 16px 8px 32px;
     align-items: center;
     gap: 32px;
 
     li {
       color: var(--text-dark);
       white-space: nowrap;
+    }
+    &.dark {
+      li {
+        color: var(--text-bright);
+      }
     }
   }
   @include media(phone) {
@@ -153,6 +157,8 @@
       &.open {
         height: 100vh;
         padding: 200px 32px 200px;
+                align-items: flex-start;
+        justify-content: flex-end;
       }
 
       li {
