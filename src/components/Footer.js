@@ -49,7 +49,7 @@ const Footer = () => {
     <footer className="footer" ref={footerRef}>
       <div className="top-footer container">
         <div className="left">
-          <h4>Say HELLO..!</h4>
+          <h4 className="pixel-font">Say HELLO..!</h4>
           <p>
             Turning Visions Into Effective Products.
             <br />

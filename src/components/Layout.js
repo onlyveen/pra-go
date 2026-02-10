@@ -3,6 +3,9 @@ import { useRouter } from "next/router";
 import Nav from "./Nav"; // Make sure to create this component
 import Footer from "./Footer"; // Make sure to create this component
 import CursorBackground from "./CursorBackground";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
+import { GeistPixelCircle } from "geist/font/pixel";
 
 const Layout = ({ children, page }) => {
   const router = useRouter();
@@ -24,7 +27,7 @@ const Layout = ({ children, page }) => {
   }, [router.pathname]);
 
   return (
-    <div className="page">
+    <div className={`page ${GeistSans.variable} ${GeistMono.variable} ${GeistPixelCircle.variable}`}>
       <CursorBackground />
       <Nav scroll={page === "home"} />
       <main>{children}</main>

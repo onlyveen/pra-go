@@ -30,7 +30,7 @@
       height: 48px;
       right: 0;
       left: 0;
-      transform: translateX(150px);
+      transform: translateX(250px);
       margin: auto;
       cursor: pointer;
       img {
@@ -48,7 +48,7 @@
         }
       }
       &.slick-prev {
-        transform: translateX(-150px);
+        transform: translateX(-250px);
         @include media(phone) {
           transform: translateX(-100px);
         }

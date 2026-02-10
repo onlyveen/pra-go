@@ -73,16 +73,16 @@ const Nav = ({ scroll }) => {
         className={`menuItems ${menuOpen ? "open" : ""} ${isDarkBackground ? "dark" : "light"}`}
       >
         <li>
-          <a href="/#about-me">Me</a>
+          <a  className="pixel-font" href="/#about-me">Me</a>
         </li>
         <li>
-          <a href="/#my-work">My Work</a>
+          <a  className="pixel-font" href="/#my-work">My Work</a>
         </li>
         <li>
-          <a href="/#my-writings">My Writings</a>
+          <a  className="pixel-font" href="/#my-writings">My Writings</a>
         </li>
         <li>
-          <a href="/my-clicks">My Clicks</a>
+          <a  className="pixel-font" href="/my-clicks">My Clicks</a>
         </li>
         <li>
           <a

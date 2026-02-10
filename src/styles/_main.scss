@@ -1,11 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300..700&display=swap");
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
-
-  --font-main: "Space Grotesk", sans-serif;
-  --font-head: "Bebas Neue", sans-serif;
-
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -43,16 +38,19 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: "Space Grotesk", sans-serif;
+    font-family: var(--font-geist-sans);
+  font-synthesis: none;
+  font-synthesis-weight: none;
 }
 
 html,
 body {
   scroll-behavior: smooth;
-
   max-width: 100vw;
   overflow-x: hidden;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: var(--font-geist-sans);
+  font-synthesis: none;
+  font-synthesis-weight: none;
 }
 
 body {
@@ -93,17 +91,24 @@ body {
 .high {
   color: var(--color-primary);
 }
+.pixel-font{
+    font-family: var(--font-geist-pixel-circle) !important;
+  font-synthesis: none !important;
+  font-synthesis-weight: none !important;
+}
 .subTitle {
   color: var(--color-primary);
-  font-family: var(--font-head);
-  font-size: 64px;
+  font-size: 100px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
   text-align: center;
-  width: 300px;
   margin: auto;
+  letter-spacing: -.03%;
   margin-bottom: 64px;
+      font-family: var(--font-geist-pixel-circle);
+  font-synthesis: none;
+  font-synthesis-weight: none;
   @include media(phone) {
     font-size: 48px;
     margin-bottom: 32px;
