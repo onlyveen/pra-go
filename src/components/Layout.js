@@ -22,6 +22,18 @@ const Layout = ({ children, page }) => {
     };
   }, [router.pathname]);
 
+  useEffect(() => {
+    // Remove loading div after 2 seconds on any page
+    const timer = setTimeout(() => {
+      const loadingEl = document.querySelector(".loading");
+      if (loadingEl) {
+        loadingEl.remove();
+      }
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className={`page ${GeistSans.variable} ${GeistMono.variable} ${GeistPixelCircle.variable}`}>
       <CursorBackground />

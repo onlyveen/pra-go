@@ -24,13 +24,8 @@ const Header = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Remove loading div after 2 seconds, then start animations
+      // Start animations after 2 seconds (when loading is removed)
       setTimeout(() => {
-        const loadingEl = document.querySelector(".loading");
-        if (loadingEl) {
-          loadingEl.remove();
-        }
-
         // Create timeline - all animations start together after loading is removed
         const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 

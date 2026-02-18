@@ -27,8 +27,7 @@ const Nav = ({ scroll }) => {
       // Check if background is dark by checking body class or background color
       const bodyClasses = document.body.className;
       const isDark = bodyClasses.includes('dark') ||
-                     bodyClasses.includes('work') ||
-                     bodyClasses.includes('my-clicks');
+                     bodyClasses.includes('work');
       setIsDarkBackground(isDark);
     };
 
