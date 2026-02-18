@@ -3,6 +3,7 @@
   position: relative;
   z-index: 1;
   @include media(phone) {
+    height: 100vh;
     padding-top: 100px;
     display: flex;
     flex-direction: column;
