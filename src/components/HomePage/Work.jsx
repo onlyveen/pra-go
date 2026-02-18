@@ -146,7 +146,7 @@ const Work = () => {
   if (loading)
     return (
       <div className="work-section" id="my-work">
-        <div className="loading">Loading...</div>
+        <div className="loading inline"></div>
       </div>
     );
   if (error)

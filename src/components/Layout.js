@@ -11,16 +11,12 @@ const Layout = ({ children, page }) => {
   const router = useRouter();
 
   useEffect(() => {
-    // Get the current path name
     const pathName = router.pathname;
 
-    // Create a class name based on the path name
     const bodyClassName = pathName.replace(/\//g, "-").substring(1) || "home";
 
-    // Set the class name on the body element
     document.body.className = bodyClassName;
 
-    // Cleanup function to remove the class when the component unmounts or path changes
     return () => {
       document.body.className = "";
     };
@@ -29,6 +25,7 @@ const Layout = ({ children, page }) => {
   return (
     <div className={`page ${GeistSans.variable} ${GeistMono.variable} ${GeistPixelCircle.variable}`}>
       <CursorBackground />
+      <div className="loading"></div>
       <Nav scroll={page === "home"} />
       <main>{children}</main>
       <Footer />

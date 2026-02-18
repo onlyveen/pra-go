@@ -7,6 +7,7 @@ import Writings from "@/components/HomePage/Writings";
 
 const HomePage = () => {
   return (
+    
     <Layout page="home">
       <Header />
       <About />

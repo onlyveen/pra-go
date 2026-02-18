@@ -138,7 +138,7 @@ const PraGoView = () => {
         <div ref={pageEndRef}></div>
         <div className="container loading-container">
           {loading ? (
-            <div className="loading inline">Loading</div>
+            <div className="loading inline"></div>
           ) : (
             <div className="loading inline no-animate">Thats All</div>
           )}

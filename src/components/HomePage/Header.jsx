@@ -24,66 +24,74 @@ const Header = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Create timeline - all animations start together
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      // Remove loading div after 2 seconds, then start animations
+      setTimeout(() => {
+        const loadingEl = document.querySelector(".loading");
+        if (loadingEl) {
+          loadingEl.remove();
+        }
 
-      // All elements animate in together, except image comes after DESIGNER text
-      tl.from(imageRef.current, {
-        y: 50,
-        opacity: 0,
-        duration: 0.8,
-      })
-        .from(
-          designerTextRef.current?.children,
-          {
-            opacity: 0,
-            filter: "blur(20px)",
-            duration: 0.8,
-            stagger: 0.08,
-            ease: "power2.out",
-          },
-          "<"
-        )
-        .from(
-          titleRef.current?.children,
-          {
-            y: 100,
-            opacity: 0,
-            duration: 1,
-            stagger: 0.2,
-          },
-          "<"
-        )
-        .from(
-          abstractRef.current,
-          {
-            y: 50,
-            opacity: 0,
-            duration: 0.8,
-          },
-          "<"
-        )
-        .from(
-          actionsRef.current?.children,
-          {
-            y: 30,
-            opacity: 0,
-            duration: 0.6,
-            stagger: 0.15,
-          },
-          "<"
-        )
-        .from(
-          veenBabuImageRef.current,
-          {
-            opacity: 0,
-            filter: "blur(30px)",
-            scale: 1.1,
-            duration: 1.2,
-            ease: "power2.out",
-          },
-          "-=0.4"
-        );
+        // Create timeline - all animations start together after loading is removed
+        const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+        // All elements animate in together, except image comes after DESIGNER text
+        tl.from(imageRef.current, {
+          y: 50,
+          opacity: 0,
+          duration: 0.8,
+        })
+          .from(
+            designerTextRef.current?.children,
+            {
+              opacity: 0,
+              filter: "blur(20px)",
+              duration: 0.8,
+              stagger: 0.08,
+              ease: "power2.out",
+            },
+            "<"
+          )
+          .from(
+            titleRef.current?.children,
+            {
+              y: 100,
+              opacity: 0,
+              duration: 1,
+              stagger: 0.2,
+            },
+            "<"
+          )
+          .from(
+            abstractRef.current,
+            {
+              y: 50,
+              opacity: 0,
+              duration: 0.8,
+            },
+            "<"
+          )
+          .from(
+            actionsRef.current?.children,
+            {
+              y: 30,
+              opacity: 0,
+              duration: 0.6,
+              stagger: 0.15,
+            },
+            "<"
+          )
+          .from(
+            veenBabuImageRef.current,
+            {
+              opacity: 0,
+              filter: "blur(30px)",
+              scale: 1.1,
+              duration: 1.2,
+              ease: "power2.out",
+            },
+            "-=0.4"
+          );
+      }, 2000);
     }, headerRef);
 
     return () => ctx.revert();

@@ -116,7 +116,7 @@ const Writings = () => {
   if (loading)
     return (
       <div className="writings-section" id="my-writings">
-        <div className="loading">Loading...</div>
+        <div className="loading inline"></div>
       </div>
     );
   if (error)
