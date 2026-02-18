@@ -3,8 +3,7 @@
   position: relative;
   z-index: 1;
   @include media(phone) {
-    height: 100vh;
-    padding-top: 100px;
+    padding-top: 70px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -103,7 +102,7 @@
     line-height: 1.6;
     @include media(phone) {
       width: 100%;
-      margin: 0 0 200px;
+      margin: 0 0 70px;
       text-align: center;
     }
   }
@@ -133,7 +132,7 @@
       z-index: 0;
       margin-bottom: -5px;
     }
-  
+
     h1.designer-text {
       font-size: 25vw;
       width: 100vw;
@@ -151,8 +150,22 @@
         will-change: filter, opacity;
       }
 
+      .mobile-break {
+        display: none;
+      }
+
       @include media(phone) {
         flex-direction: row;
+        flex-wrap: wrap;
+        line-height: 0.8;
+        justify-content: flex-start;
+        font-size: 40vw;
+
+        .mobile-break {
+          display: flex;
+          width: 100%;
+          flex-basis: 100%;
+        }
       }
     }
 
@@ -168,10 +181,9 @@
         will-change: filter, opacity, transform;
 
         @include media(phone) {
-          right: 0;
-          left: 0;
-          margin: auto;
-          width: 70% !important;
+          bottom: 1%;
+          width: 100% !important;
+          right: -30%;
         }
         @include media(breakpoint-md-phone) {
           width: 60% !important;

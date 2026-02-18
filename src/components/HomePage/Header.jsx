@@ -140,9 +140,12 @@ const Header = () => {
         />
         <h1 className="designer-text" ref={designerTextRef}>
           {"DESIGNER".split("").map((letter, index) => (
-            <span key={index} style={{ display: "inline-block" }}  className="pixel-font">
-              {letter}
-            </span>
+            <React.Fragment key={index}>
+              <span style={{ display: "inline-block" }} className="pixel-font">
+                {letter}
+              </span>
+              {(index === 2 || index === 5) && <div className="mobile-break"></div>}
+            </React.Fragment>
           ))}
         </h1>
         {/* <Image
