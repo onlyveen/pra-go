@@ -96,8 +96,8 @@
     }
   }
   .abstract {
-    margin: 24px 0 250px;
-    width: 70%;
+    margin: 24px 0 150px;
+    width: 60%;
     font-size: 18px;
     line-height: 1.6;
     @include media(phone) {
@@ -170,25 +170,50 @@
       }
     }
 
-    img {
+    .image-container {
       position: absolute;
-      width: auto !important;
+      width: 45%;
       right: 5%;
       bottom: -5%;
-      height: auto !important;
       z-index: 1;
-      &:first-child {
-        width: 45% !important;
-        will-change: filter, opacity, transform;
 
-        @include media(phone) {
-          bottom: 1%;
-          width: 100% !important;
-          right: -30%;
-        }
-        @include media(breakpoint-md-phone) {
-          width: 60% !important;
-        }
+      @include media(phone) {
+        bottom: 1%;
+        width: 100%;
+        right: -30%;
+      }
+      @include media(breakpoint-md-phone) {
+        width: 60%;
+      }
+
+      img {
+        width: 100% !important;
+        height: auto !important;
+        display: block;
+      }
+
+      .base-image {
+        position: relative;
+        will-change: filter, opacity, transform;
+      }
+
+      .art-image-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+
+        // Water droplet blob mask
+        mask: url(#blob-mask);
+        -webkit-mask: url(#blob-mask);
+      }
+
+      .art-image {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover;
       }
     }
   }
