@@ -5,13 +5,30 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 
-  --color-primary: #ff4f00; //#D51B1C;
+  --color-primary: #ff4f00;
   --color-bg: #f3f2ee;
   --color-dark: #151515;
   --text-dark: #151515;
   --text-bright: #f3f2ee;
   --color-black: #000000;
   --color-white: #ffffff;
+}
+
+// Theme-based color overrides
+body.spiderman-theme {
+  --color-primary: #D51B1C;
+
+  .art-image-wrapper.veenspidy-image {
+    display: block !important;
+  }
+}
+
+body.veenart-theme {
+  --color-primary: #ff4f00;
+
+  .art-image-wrapper.veenart-image {
+    display: block !important;
+  }
 }
 
 @media (prefers-color-scheme: dark) {

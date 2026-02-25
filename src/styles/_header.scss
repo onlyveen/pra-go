@@ -208,6 +208,12 @@
         // Water droplet blob mask
         mask: url(#blob-mask);
         -webkit-mask: url(#blob-mask);
+
+        // Hide both by default
+        &.veenart-image,
+        &.veenspidy-image {
+          display: none;
+        }
       }
 
       .art-image {

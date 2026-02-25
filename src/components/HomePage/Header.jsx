@@ -15,28 +15,22 @@ const Header = () => {
   const designerTextRef = useRef(null);
   const veenPicImageRef = useRef(null);
   const veenArtImageRef = useRef(null);
+  const veenSpidyImageRef = useRef(null);
   const svgRef = useRef(null);
   const pathRef = useRef(null);
 
   // Randomly select between veenArt and veenSpidy on load
-  const { maskImage, isSpiderman } = useMemo(() => {
+  useMemo(() => {
     const useSpiderman = Math.random() > 0.5;
 
-    // Set color theme immediately
+    // Set body class for theme
     if (typeof document !== 'undefined') {
-      const root = document.documentElement;
-      const color = useSpiderman ? '#D51B1C' : '#ff4f00';
-      const image = useSpiderman ? 'veenSpidy' : 'veenArt';
-      root.style.setProperty('--color-primary', color);
-      console.log('Theme:', useSpiderman ? 'SPIDERMAN' : 'VEEN ART');
-      console.log('Color:', color);
-      console.log('Mask Image:', image);
+      // Remove both classes first
+      document.body.classList.remove('spiderman-theme', 'veenart-theme');
+      // Add the selected one
+      document.body.classList.add(useSpiderman ? 'spiderman-theme' : 'veenart-theme');
+      console.log('Theme:', useSpiderman ? 'SPIDERMAN' : 'VEENART');
     }
-
-    return {
-      maskImage: useSpiderman ? veenSpidy : veenArt,
-      isSpiderman: useSpiderman
-    };
   }, []);
 
   const words = [
@@ -120,10 +114,22 @@ const Header = () => {
 
   // Water droplet wiggle effect
   useEffect(() => {
-    const wrapper = veenArtImageRef.current;
+    const wrapperArt = veenArtImageRef.current;
+    const wrapperSpidy = veenSpidyImageRef.current;
     const path = pathRef.current;
     const svg = svgRef.current;
-    if (!wrapper || !path || !svg) return;
+    if ((!wrapperArt && !wrapperSpidy) || !path || !svg) return;
+
+    // Function to get the visible wrapper
+    const getVisibleWrapper = () => {
+      if (wrapperArt && window.getComputedStyle(wrapperArt).display !== 'none') {
+        return wrapperArt;
+      }
+      if (wrapperSpidy && window.getComputedStyle(wrapperSpidy).display !== 'none') {
+        return wrapperSpidy;
+      }
+      return wrapperArt || wrapperSpidy; // Fallback
+    };
 
     let targetX = 0;
     let targetY = 0;
@@ -156,6 +162,7 @@ const Header = () => {
     }));
 
     const handleMouseMove = (e) => {
+      const wrapper = getVisibleWrapper();
       const rect = wrapper.getBoundingClientRect();
       targetX = e.clientX - rect.left;
       targetY = e.clientY - rect.top;
@@ -285,6 +292,7 @@ const Header = () => {
       });
 
       // Resize SVG to match wrapper
+      const wrapper = getVisibleWrapper();
       const rect = wrapper.getBoundingClientRect();
       svg.setAttribute('width', rect.width);
       svg.setAttribute('height', rect.height);
@@ -390,12 +398,21 @@ const Header = () => {
             ref={veenPicImageRef}
             className="base-image"
           />
-          {/* Blob Masked Art Layer - randomly veenArt or veenSpidy */}
-          <div className="art-image-wrapper" ref={veenArtImageRef}>
+          {/* Blob Masked Art Layer - veenArt */}
+          <div className="art-image-wrapper veenart-image" ref={veenArtImageRef}>
             <Image
               loading="lazy"
-              src={maskImage}
+              src={veenArt}
               alt="Praveen Gorakala's Art"
+              className="art-image"
+            />
+          </div>
+          {/* Blob Masked Art Layer - veenSpidy */}
+          <div className="art-image-wrapper veenspidy-image" ref={veenSpidyImageRef}>
+            <Image
+              loading="lazy"
+              src={veenSpidy}
+              alt="Praveen Gorakala's Spiderman Art"
               className="art-image"
             />
           </div>

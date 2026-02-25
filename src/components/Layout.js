@@ -15,10 +15,18 @@ const Layout = ({ children, page }) => {
 
     const bodyClassName = pathName.replace(/\//g, "-").substring(1) || "home";
 
-    document.body.className = bodyClassName;
+    // Remove previous page class if exists
+    document.body.classList.forEach((className) => {
+      if (className !== 'spiderman-theme' && className !== 'veenart-theme') {
+        document.body.classList.remove(className);
+      }
+    });
+
+    // Add new page class
+    document.body.classList.add(bodyClassName);
 
     return () => {
-      document.body.className = "";
+      document.body.classList.remove(bodyClassName);
     };
   }, [router.pathname]);
 
