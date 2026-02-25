@@ -1,7 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useMemo } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import veenArt from "@images/header/veen-art.png";
+import veenSpidy from "@images/header/veen-spidy.png";
 import veenPic from "@images/header/veen-pic.png";
 import TypingText from "../TypingText";
 
@@ -16,6 +17,27 @@ const Header = () => {
   const veenArtImageRef = useRef(null);
   const svgRef = useRef(null);
   const pathRef = useRef(null);
+
+  // Randomly select between veenArt and veenSpidy on load
+  const { maskImage, isSpiderman } = useMemo(() => {
+    const useSpiderman = Math.random() > 0.5;
+
+    // Set color theme immediately
+    if (typeof document !== 'undefined') {
+      const root = document.documentElement;
+      const color = useSpiderman ? '#D51B1C' : '#ff4f00';
+      const image = useSpiderman ? 'veenSpidy' : 'veenArt';
+      root.style.setProperty('--color-primary', color);
+      console.log('Theme:', useSpiderman ? 'SPIDERMAN' : 'VEEN ART');
+      console.log('Color:', color);
+      console.log('Mask Image:', image);
+    }
+
+    return {
+      maskImage: useSpiderman ? veenSpidy : veenArt,
+      isSpiderman: useSpiderman
+    };
+  }, []);
 
   const words = [
     "🎯 Branding Expert",
@@ -368,11 +390,11 @@ const Header = () => {
             ref={veenPicImageRef}
             className="base-image"
           />
-          {/* Blob Masked Art Layer - veenArt */}
+          {/* Blob Masked Art Layer - randomly veenArt or veenSpidy */}
           <div className="art-image-wrapper" ref={veenArtImageRef}>
             <Image
               loading="lazy"
-              src={veenArt}
+              src={maskImage}
               alt="Praveen Gorakala's Art"
               className="art-image"
             />

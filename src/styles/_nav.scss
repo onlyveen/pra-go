@@ -9,8 +9,16 @@
   right: 0;
   top: 0;
   z-index: 999;
-  // transform: translateY(-100%);
   transition: all 0.35s;
+   &.spiderman-theme{
+    .logo-svg{
+      svg{
+        path.highlight{
+          fill: #D51B1C !important;
+        }
+      }
+    }
+  }
   @include media(phone) {
     background: transparent;
     backdrop-filter: none;
@@ -43,6 +51,7 @@
       transition: all 0.35s;
       width: auto;
     }
+    
     &:hover {
       animation: jigelbg 0.5s steps(1, start) infinite;
       span {
@@ -76,6 +85,7 @@
       }
     }
   }
+ 
   .burgerMenu {
     display: flex;
     display: none;
