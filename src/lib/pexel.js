@@ -18,10 +18,13 @@ export const fetchPhotosFromCollection = async (
         params: {
           page,
           per_page: perPage,
+          sort: 'desc', // Sort by latest uploads first
         },
       }
     );
-    return response.data.media;
+    // Sort by ID in descending order (newer photos have higher IDs)
+    const sortedMedia = response.data.media.sort((a, b) => b.id - a.id);
+    return sortedMedia;
   } catch (error) {
     console.error("Error fetching photos:", error);
     return [];
