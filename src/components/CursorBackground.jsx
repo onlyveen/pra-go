@@ -52,16 +52,46 @@ const CursorBackground = () => {
       });
     };
 
+    // Touch move handler
+    const handleTouchMove = (e) => {
+      if (e.touches.length > 0) {
+        const touch = e.touches[0];
+        gsap.to(mousePos.current, {
+          x: touch.clientX,
+          y: touch.clientY,
+          duration: 0.5,
+          ease: "power2.out",
+        });
+      }
+    };
+
+    // Touch start handler
+    const handleTouchStart = (e) => {
+      if (e.touches.length > 0) {
+        const touch = e.touches[0];
+        gsap.to(mousePos.current, {
+          x: touch.clientX,
+          y: touch.clientY,
+          duration: 0.5,
+          ease: "power2.out",
+        });
+      }
+    };
+
     // Window resize handler
     const handleResize = () => {
       setCanvasSize();
     };
 
     window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("touchmove", handleTouchMove);
+    window.addEventListener("touchstart", handleTouchStart);
     window.addEventListener("resize", handleResize);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchstart", handleTouchStart);
       window.removeEventListener("resize", handleResize);
       cancelAnimationFrame(animationFrameId);
     };

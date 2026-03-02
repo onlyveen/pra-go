@@ -232,7 +232,7 @@
   .domain-card {
     background: var(--color-white);
     border-radius: 0 0 8px 8px;
-    padding: 24px;
+    padding: 18px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     border-top: 2px solid #00C851;
     transition: all 0.3s ease;
@@ -456,8 +456,7 @@
       }
 
       .days-count {
-        font-size: 20px;
-        font-weight: 700;
+        font-size: 16px;
         color: #00C851;
 
         &.warning {
@@ -997,4 +996,9 @@
       }
     }
   }
+}
+.alert-note{
+  color : #CC0000;
+  text-align: center;
+  display: block;
 }

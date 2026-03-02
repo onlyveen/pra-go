@@ -16,6 +16,7 @@ const DomainStats = () => {
     "atojteluguchurch.com",
     "gospelminimelodies.com",
     "seharievents.com",
+    "axjhealthcare.com"
   ];
 
   const fetchWhoisData = async () => {
@@ -83,7 +84,23 @@ const DomainStats = () => {
       });
 
       const results = await Promise.all(domainPromises);
-      setDomains(results);
+
+      // Sort domains by expiry date - expiring soonest first
+      const sortedResults = results.sort((a, b) => {
+        // If either domain doesn't have expiry data, push to end
+        if (!a.expiryDate) return 1;
+        if (!b.expiryDate) return -1;
+
+        // Calculate days until expiry for both domains
+        const today = new Date();
+        const daysA = Math.ceil((new Date(a.expiryDate) - today) / (1000 * 60 * 60 * 24));
+        const daysB = Math.ceil((new Date(b.expiryDate) - today) / (1000 * 60 * 60 * 24));
+
+        // Sort ascending (soonest expiry first)
+        return daysA - daysB;
+      });
+
+      setDomains(sortedResults);
       setLastUpdate(new Date());
     } catch (err) {
       console.error("Error fetching domain data:", err);
@@ -242,54 +259,25 @@ const DomainStats = () => {
                           </span>
                         </div>
 
-                        {(domain.createdDate || hasExpiryDate) && (
-                          <div className="detail-row info-grid dates-row">
-                            {domain.createdDate && (
-                              <div className="info-item">
-                                <span className="label">Created:</span>
-                                <span className="value">
-                                  {formatDate(domain.createdDate)}
-                                </span>
-                              </div>
-                            )}
-                            {hasExpiryDate && (
-                              <div className="info-item">
-                                <span className="label">Expires:</span>
-                                <span className="value">
-                                  {formatDate(domain.expiryDate)}
-                                </span>
-                              </div>
-                            )}
-                          </div>
-                        )}
-
+                      
                         {hasExpiryDate ? (
                           <>
                             <div className="detail-row expiry-countdown">
                               <div className="countdown-header">
-                                <span className="label">Days remaining:</span>
+                                
                                 <span
                                   className={`value days-count ${expiryStatus}`}
                                 >
+                                  Expiring in{" "}
                                   {daysUntilExpiry > 0
                                     ? daysUntilExpiry
                                     : "EXPIRED"}
                                   {daysUntilExpiry > 0 && (
-                                    <span className="days-text"> days   {expiryStatus === "critical" &&
-                                    daysUntilExpiry > 0 && (
-                                      <small className="alert-note critical">
-                                        (⚠️ Renewal required soon!)
-                                      </small>
-                                    )}
-
-                                  {expiryStatus === "expired" && (
-                                    <small className="alert-note expired">
-                                      (❌ Domain has expired!)
-                                    </small>
-                                  )}</span>
-                                  )}
+                                    <span className="days-text"> days</span>
+                                )}
                                 
                                 </span>
+                                <span className="label">{formatDate(domain.expiryDate)}</span>
                               </div>
                               <div className="expiry-progress-bar">
                                 <div
@@ -299,6 +287,20 @@ const DomainStats = () => {
                                   }}
                                 ></div>
                               </div>
+                            </div>
+                            <div>
+                              {expiryStatus === "critical" &&
+                                      daysUntilExpiry > 0 && (
+                                        <small className="alert-note critical">
+                                        ⚠️ Renewal required soon!
+                                      </small>
+                                    )}
+
+                                  {expiryStatus === "expired" && (
+                                    <small className="alert-note expired">
+                                      ❌ Domain has expired!
+                                    </small>
+                                  )}
                             </div>
                           </>
                         ) : (

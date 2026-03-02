@@ -10,11 +10,14 @@
   top: 0;
   z-index: 999;
   transition: all 0.35s;
-   .spiderman-theme &{
-    .logo-svg{
-      svg{
-        path.highlight{
-          fill: #D51B1C !important;
+    .logo-menu {
+          display: none;}
+
+  .spiderman-theme & {
+    .logo-svg {
+      svg {
+        path.highlight {
+          fill: #d51b1c !important;
         }
       }
     }
@@ -51,7 +54,7 @@
       transition: all 0.35s;
       width: auto;
     }
-    
+
     &:hover {
       animation: jigelbg 0.5s steps(1, start) infinite;
       span {
@@ -85,7 +88,7 @@
       }
     }
   }
- 
+
   .burgerMenu {
     display: flex;
     display: none;
@@ -97,7 +100,7 @@
     background: var(--text-dark);
     box-shadow: 0 0 0 10px var(--text-dark);
     border-radius: 5px 0 0 0;
-    
+
     span {
       height: 10px;
       width: 10px;
@@ -107,6 +110,7 @@
       transform-origin: center;
       border: solid 1px var(--text-dark);
     }
+
     &.open {
       height: 40px;
       width: 40px;
@@ -170,13 +174,23 @@
       &.open {
         height: 100vh;
         padding: 200px 32px 200px;
-                align-items: flex-start;
+        align-items: flex-start;
         justify-content: flex-end;
       }
 
       li {
         font-size: 48px;
         font-weight: 900;
+        .logo-menu {
+          @include media(phone) {
+            display: block;
+          }
+          svg {
+            path.highlight {
+              fill: #fff !important;
+            }
+          }
+        }
         a {
           color: var(--text-bright);
         }

@@ -20,14 +20,14 @@ const Nav = ({ scroll }) => {
       try {
         const [lightResponse, darkResponse] = await Promise.all([
           fetch(logoLight.src),
-          fetch(logoDark.src)
+          fetch(logoDark.src),
         ]);
         const lightText = await lightResponse.text();
         const darkText = await darkResponse.text();
         setLogoLightSvg(lightText);
         setLogoDarkSvg(darkText);
       } catch (error) {
-        console.error('Failed to load SVGs:', error);
+        console.error("Failed to load SVGs:", error);
       }
     };
     loadSvgs();
@@ -47,14 +47,17 @@ const Nav = ({ scroll }) => {
 
       // Check if background is dark by checking body class or background color
       const bodyClasses = document.body.className;
-      const isDark = bodyClasses.includes('dark') ||
-                     bodyClasses.includes('work');
+      const isDark =
+        bodyClasses.includes("dark") || bodyClasses.includes("work");
       setIsDarkBackground(isDark);
 
       // Check color theme
       const primaryColor = getComputedStyle(document.documentElement)
-        .getPropertyValue('--color-primary').trim();
-      setIsSpidermanTheme(primaryColor === '#D51B1C' || primaryColor === '#d51b1c');
+        .getPropertyValue("--color-primary")
+        .trim();
+      setIsSpidermanTheme(
+        primaryColor === "#D51B1C" || primaryColor === "#d51b1c",
+      );
     };
 
     // Initial check
@@ -66,14 +69,14 @@ const Nav = ({ scroll }) => {
     const observer = new MutationObserver(handleScroll);
     observer.observe(document.body, {
       attributes: true,
-      attributeFilter: ['class']
+      attributeFilter: ["class"],
     });
 
     // Also listen for style changes on :root
     const styleObserver = new MutationObserver(handleScroll);
     styleObserver.observe(document.documentElement, {
       attributes: true,
-      attributeFilter: ['style']
+      attributeFilter: ["style"],
     });
 
     return () => {
@@ -83,25 +86,25 @@ const Nav = ({ scroll }) => {
     };
   }, []);
   return (
-    <nav className={`navBar ${isVisible ? "visible" : ""} ${isSpidermanTheme ? "spiderman-theme" : "orange-theme"}`}>
+    <nav
+      className={`navBar ${isVisible ? "visible" : ""} ${isSpidermanTheme ? "spiderman-theme" : "orange-theme"}`}
+    >
       <a href="/#" className="logo">
         {isDarkBackground ? (
           logoLightSvg ? (
             <div
               dangerouslySetInnerHTML={{ __html: logoLightSvg }}
               className="logo-svg"
-              style={{ width: '169px', height: 'auto' }}
+              style={{ width: "169px", height: "auto" }}
             />
           ) : null
-        ) : (
-          logoDarkSvg ? (
-            <div
-              dangerouslySetInnerHTML={{ __html: logoDarkSvg }}
-              className="logo-svg"
-              style={{ width: '169px', height: 'auto' }}
-            />
-          ) : null
-        )}
+        ) : logoDarkSvg ? (
+          <div
+            dangerouslySetInnerHTML={{ __html: logoDarkSvg }}
+            className="logo-svg"
+            style={{ width: "169px", height: "auto" }}
+          />
+        ) : null}
       </a>
       <div
         className={`burgerMenu ${menuOpen ? "open" : ""}`}
@@ -117,16 +120,33 @@ const Nav = ({ scroll }) => {
         className={`menuItems ${menuOpen ? "open" : ""} ${isDarkBackground ? "dark" : "light"}`}
       >
         <li>
-          <a  className="pixel-font" href="/#about-me">Me</a>
+          <a className="logo-menu" href="/#home">
+            <div
+              dangerouslySetInnerHTML={{ __html: logoLightSvg }}
+              className="logo-svg"
+              style={{ width: "169px", height: "auto" }}
+            />
+          </a>
         </li>
         <li>
-          <a  className="pixel-font" href="/#my-work">My Work</a>
+          <a className="pixel-font" href="/#about-me">
+            Me
+          </a>
         </li>
         <li>
-          <a  className="pixel-font" href="/#my-writings">My Writings</a>
+          <a className="pixel-font" href="/#my-work">
+            My Work
+          </a>
         </li>
         <li>
-          <a  className="pixel-font" href="/my-clicks">My Clicks</a>
+          <a className="pixel-font" href="/#my-writings">
+            My Writings
+          </a>
+        </li>
+        <li>
+          <a className="pixel-font" href="/my-clicks">
+            My Clicks
+          </a>
         </li>
         <li>
           <a
