@@ -68,7 +68,7 @@ const DisplayPictures = () => {
       <Layout page="displaypictures">
         <div className="display-pictures-page">
           <div className="container">
-            <h1 className="page-title">Display Pictures</h1>
+            <h1 className="page-title ">Display Pictures</h1>
 
             <div className="pictures-grid">
               {pictures.map((picture) => (
