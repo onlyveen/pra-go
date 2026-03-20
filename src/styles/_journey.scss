@@ -75,7 +75,7 @@
     background: var(--color-white);
     flex-shrink: 0;
     transform: translateY(50px);
-
+    box-shadow: inset 0 -50px 30px rgba(0, 0, 0, 0.25);
   }
 
   // Clip / badge fastener
@@ -94,8 +94,8 @@
 
   // The ID card itself
   .id-card {
-    width: 280px;
-    height: calc(280px * 1.586);
+    width: 250px;
+    height: calc(250px * 1.586);
     background: #1c1c1c;
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.07);
@@ -108,7 +108,7 @@
       0 2px 8px rgba(0, 0, 0, 0.3);
 
     .idc-header {
-      padding: 24px 28px 20px;
+      padding: 15px;
       display: flex;
       flex-direction: column;
       gap: 14px;
@@ -146,11 +146,11 @@
 
     .idc-body {
       flex: 1;
-      padding: 28px 28px 32px;
+      padding: 20px;
       overflow: hidden;
 
       .idc-role {
-        font-size: 22px;
+        font-size: 18px;
         font-weight: 700;
         color: var(--text-bright);
         margin-bottom: 6px;
@@ -171,8 +171,9 @@
       }
 
       .idc-desc {
-        font-size: 14px;
+        font-size: 13px;
         color: rgba(243, 242, 238, 0.55);
+        letter-spacing: -1%;
         line-height: 1.7;
         margin: 0;
       }

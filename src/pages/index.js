@@ -5,6 +5,7 @@ import About from "@/components/HomePage/About";
 import Journey from "@/components/HomePage/Journey";
 import Work from "@/components/HomePage/Work";
 import Writings from "@/components/HomePage/Writings";
+import Clicks from "@/components/HomePage/Clicks";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
@@ -34,6 +35,7 @@ const HomePage = () => {
       <Journey />
       <Work />
       <Writings />
+      <Clicks />
     </Layout>
   );
 };

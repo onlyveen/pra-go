@@ -4,12 +4,16 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(15px);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 999999;
+
+  .loading {
+    border-radius: 12px;
+  }
 
   .modal {
     background: white;
@@ -22,6 +26,11 @@
     border-radius: 12px;
     max-width: 90vw;
     overflow: auto;
+
+    &.loaded {
+      min-width: 0;
+
+    }
 
     @include media(tablet-portrait) {
       height: auto;
@@ -70,6 +79,7 @@
       position: absolute;
       height: 2px;
       background: var(--color-primary);
+      border-radius: 12px;
       width: 50%;
       top: 0;
       right: 0;

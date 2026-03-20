@@ -61,7 +61,7 @@ const experience = [
 ];
 
 // Each card gets its own string length for a natural, uneven hanging look
-const STRING_HEIGHTS = [100, 170, 120, 210, 130];
+const STRING_HEIGHTS = [100, 160, 120, 200, 130];
 
 const Journey = () => {
   const sectionRef = useRef(null);

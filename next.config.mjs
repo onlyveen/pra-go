@@ -5,7 +5,7 @@ const nextConfig = {
   images: {
     domains: ["images.pexels.com"],
   },
-  // Add other configurations as needed
+  transpilePackages: ["three"],
 };
 
 // Export the configuration
