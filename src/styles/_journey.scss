@@ -1,0 +1,182 @@
+.journey-section {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  color: var(--text-bright);
+
+  .journey-top {
+    flex-shrink: 0;
+    padding-top: 80px;
+
+    .subTitle {
+      text-align: left;
+      margin-bottom: 0;
+    }
+
+    @include media(phone) {
+      padding-top: 60px;
+    }
+  }
+
+  // The area that holds the scrolling track
+  .journey-track-outer {
+    flex: 1;
+    // overflow-x hidden clips the track translation; overflow-y visible lets
+    // cards swing without clipping during the pendulum rotation
+    overflow: hidden;
+    position: relative;
+
+    // Hanging rail — horizontal line at top
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg,
+          transparent 0%,
+          var(--color-primary) 15%,
+          var(--color-primary) 85%,
+          transparent 100%);
+      z-index: 2;
+    }
+  }
+
+  // Horizontal flex row of cards
+  // --card-w = size of one card = (viewport - 1.5 gaps) / 2.5
+  // padding-left/right = one card width so first/last card have breathing room
+  .journey-track {
+    display: flex;
+    align-items: flex-start;
+    gap: 72px;
+    padding: 0 100px 60px;
+    height: 100%;
+    will-change: transform;
+  }
+
+  // Wrapper per card — entire assembly (string + clip + card) swings as one
+  .jc-wrap {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    will-change: transform;
+    // Padding bottom gives cards room to swing without being clipped
+    padding-bottom: 32px;
+    margin-top: -50px;
+  }
+
+  // The hanging string
+  .jc-string {
+    width: 30px;
+    background: var(--color-white);
+    flex-shrink: 0;
+    transform: translateY(50px);
+
+  }
+
+  // Clip / badge fastener
+  .jc-clip {
+    width: 50px;
+    height: 20px;
+    background: var(--color-dark);
+    border-radius: 4px 4px 3px 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 10px;
+    transform: translateY(50px);
+  }
+
+  // The ID card itself
+  .id-card {
+    width: 280px;
+    height: calc(280px * 1.586);
+    background: #1c1c1c;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.5),
+      0 2px 8px rgba(0, 0, 0, 0.3);
+
+    .idc-header {
+      padding: 24px 28px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+
+      .idc-header-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .idc-num {
+        font-size: 48px;
+        font-weight: 700;
+        font-family: var(--font-geist-pixel-circle);
+        line-height: 1;
+        opacity: 0.85;
+      }
+
+      .idc-logo {
+        width: 56px;
+        height: 56px;
+        object-fit: contain;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.15);
+        padding: 6px;
+      }
+
+      .idc-period {
+        font-size: 13px;
+        opacity: 0.72;
+        font-weight: 600;
+        line-height: 1.4;
+      }
+    }
+
+    .idc-body {
+      flex: 1;
+      padding: 28px 28px 32px;
+      overflow: hidden;
+
+      .idc-role {
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--text-bright);
+        margin-bottom: 6px;
+        line-height: 1.25;
+      }
+
+      .idc-company {
+        font-size: 13px;
+        color: #ffffff;
+        font-weight: 600;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+
+        .idc-present {
+          color: var(--color-primary);
+        }
+      }
+
+      .idc-desc {
+        font-size: 14px;
+        color: rgba(243, 242, 238, 0.55);
+        line-height: 1.7;
+        margin: 0;
+      }
+    }
+  }
+
+}

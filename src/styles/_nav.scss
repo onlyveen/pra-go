@@ -147,7 +147,7 @@
       white-space: nowrap;
     }
     &.dark {
-      li {
+      li, li a:not(.btn) {
         color: var(--text-bright);
       }
     }

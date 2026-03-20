@@ -82,6 +82,10 @@ body {
     color: var(--text-bright);
   }
 
+  &.journey-section-view {
+    background: var(--color-black);
+  }
+
   &::before {
     content: "";
     height: 100vh;

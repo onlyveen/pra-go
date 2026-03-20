@@ -47,8 +47,7 @@ const Nav = ({ scroll }) => {
 
       // Check if background is dark by checking body class or background color
       const bodyClasses = document.body.className;
-      const isDark =
-        bodyClasses.includes("dark") || bodyClasses.includes("work");
+      const isDark = bodyClasses.includes("dark-section-view");
       setIsDarkBackground(isDark);
 
       // Check color theme
@@ -131,6 +130,11 @@ const Nav = ({ scroll }) => {
         <li>
           <a className="pixel-font" href="/#about-me">
             Me
+          </a>
+        </li>
+        <li>
+          <a className="pixel-font" href="/#journey">
+            My Journey
           </a>
         </li>
         <li>

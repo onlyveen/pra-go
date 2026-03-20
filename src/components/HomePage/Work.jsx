@@ -21,47 +21,6 @@ const Work = () => {
   const titleRef = useRef(null);
   const sliderRef = useRef(null);
 
-  useEffect(() => {
-    // Intersection Observer for body background color change
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            document.body.classList.add("dark-section-view");
-          } else {
-            // Only remove if no other dark sections are in view
-            const otherSections = document.querySelectorAll(
-              ".about, .writings-section"
-            );
-            const anyOtherVisible = Array.from(otherSections).some(
-              (section) => {
-                const rect = section.getBoundingClientRect();
-                const windowHeight = window.innerHeight;
-                return (
-                  rect.top < windowHeight * 0.7 &&
-                  rect.bottom > windowHeight * 0.3
-                );
-              }
-            );
-            if (!anyOtherVisible) {
-              document.body.classList.remove("dark-section-view");
-            }
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    if (workRef.current) {
-      observer.observe(workRef.current);
-    }
-
-    return () => {
-      if (workRef.current) {
-        observer.unobserve(workRef.current);
-      }
-    };
-  }, []);
 
   useEffect(() => {
     const personalAccessToken =

@@ -43,40 +43,6 @@ const About = () => {
     { name: "Adobe Premier Pro", src: pr },
   ];
 
-  useEffect(() => {
-    // Intersection Observer for body background color change
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            document.body.classList.add("dark-section-view");
-          } else {
-            // Only remove if no other dark sections are in view
-            const otherSections = document.querySelectorAll('.work-section, .writings-section');
-            const anyOtherVisible = Array.from(otherSections).some(section => {
-              const rect = section.getBoundingClientRect();
-              const windowHeight = window.innerHeight;
-              return rect.top < windowHeight * 0.7 && rect.bottom > windowHeight * 0.3;
-            });
-            if (!anyOtherVisible) {
-              document.body.classList.remove("dark-section-view");
-            }
-          }
-        });
-      },
-      { threshold: 0.4 }
-    );
-
-    if (aboutRef.current) {
-      observer.observe(aboutRef.current);
-    }
-
-    return () => {
-      if (aboutRef.current) {
-        observer.unobserve(aboutRef.current);
-      }
-    };
-  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -143,7 +109,7 @@ const About = () => {
   return (
     <div className="about" id="about-me" ref={aboutRef}>
       <div className="container">
-        <h2 className="subTitle" ref={titleRef}>About Me</h2>
+        <h2 className="subTitle" ref={titleRef}>Me</h2>
         <p ref={textRef}>
           I thrive on turning ideas into Effective Solutions with captivating
           Visuals. My design philosophy revolves around minimalism, elegance,
@@ -165,9 +131,9 @@ const About = () => {
           </span>
         </div>
       </div>
-      
-        <CircleItems items={items} />
-      
+
+      <CircleItems items={items} />
+
     </div>
   );
 };
