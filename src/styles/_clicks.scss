@@ -11,6 +11,12 @@
     padding: 0 var(--container-padding, 24px);
     align-items: stretch;
     height: 250px;
+
+    @include media(phone) {
+      height: auto;
+      padding: 0;
+      flex-wrap: wrap;
+    }
   }
 
   .clicks-col {
@@ -19,6 +25,14 @@
     border-radius: 10px;
     position: relative;
     cursor: pointer;
+
+    @include media(phone) {
+      min-width: calc(50% - 4px);
+
+      &:nth-child(4) {
+        display: none;
+      }
+    }
 
     img {
       width: 100%;
