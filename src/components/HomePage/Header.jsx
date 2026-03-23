@@ -159,10 +159,14 @@ const Header = () => {
     let idleTargetY = 0;
     let idleNextChange = 0;
     let idleStep = 0;
+    let idleMode = 0; // picked randomly each cycle
     const IDLE_TIMEOUT = 2500;
-    const IDLE_STEP_INTERVAL = 380;  // time between each zig-zag point
-    const IDLE_PAUSE = 2000;         // pause after completing full zig-zag
-    const IDLE_STEPS = 6;
+    const IDLE_STEP_INTERVAL = 330;
+    const IDLE_PAUSE = 2000;
+    const IDLE_STEPS = 4;
+    // modes: 0=left→right going down, 1=left→right going up,
+    //        2=top→bottom going right, 3=top→bottom going left
+    const IDLE_MODE_COUNT = 4;
 
     // Trail history - store positions
     const trailLength = 8;
@@ -264,13 +268,31 @@ const Header = () => {
           const wrapper = getVisibleWrapper();
           const rect = wrapper.getBoundingClientRect();
           if (rect.width && rect.height) {
-            const t = idleStep / (IDLE_STEPS - 1); // 0 → 1 top to bottom
-            // Alternate left/right columns with slight random offset
-            const isLeft = idleStep % 2 === 0;
-            const xBase = isLeft ? 0.25 : 0.75;
-            const xJitter = (Math.random() - 0.5) * 0.15;
-            idleTargetX = rect.width  * (xBase + xJitter);
-            idleTargetY = rect.height * (0.1 + t * 0.8);
+            // Pick a new random mode at the start of each cycle
+            if (idleStep === 0) idleMode = Math.floor(Math.random() * IDLE_MODE_COUNT);
+
+            const t = idleStep / (IDLE_STEPS - 1); // 0→1 along primary axis
+            const zigzag = idleStep % 2 === 0;      // alternates each step
+            const j = (Math.random() - 0.5) * 0.12; // small jitter
+
+            if (idleMode === 0) {
+              // left→right, progressing downward
+              idleTargetX = rect.width * ((zigzag ? 0.2 : 0.8) + j);
+              idleTargetY = rect.height * (0.1 + t * 0.8);
+            } else if (idleMode === 1) {
+              // left→right, progressing upward
+              idleTargetX = rect.width * ((zigzag ? 0.2 : 0.8) + j);
+              idleTargetY = rect.height * (0.9 - t * 0.8);
+            } else if (idleMode === 2) {
+              // top→bottom, progressing rightward
+              idleTargetX = rect.width * (0.1 + t * 0.8);
+              idleTargetY = rect.height * ((zigzag ? 0.2 : 0.8) + j);
+            } else {
+              // top→bottom, progressing leftward
+              idleTargetX = rect.width * (0.9 - t * 0.8);
+              idleTargetY = rect.height * ((zigzag ? 0.2 : 0.8) + j);
+            }
+
             idleStep = (idleStep + 1) % IDLE_STEPS;
           }
           // Pause after completing the full zig-zag, quick steps in between
@@ -282,7 +304,7 @@ const Header = () => {
       }
 
       // Smooth movement with inertia — faster acceleration in idle
-      const accel = isIdle ? 0.035 : 0.02;
+      const accel = isIdle ? 0.07 : 0.02;
       const dx = targetX - currentX;
       const dy = targetY - currentY;
 
