@@ -44,6 +44,9 @@ const Header = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // Hide art layers immediately — revealed with base image animation
+      gsap.set([veenArtImageRef.current, veenSpidyImageRef.current], { opacity: 0 });
+
       // Start animations after 2 seconds (when loading is removed)
       setTimeout(() => {
         // Create timeline - all animations start together after loading is removed
@@ -105,6 +108,14 @@ const Header = () => {
               ease: "power2.out",
             },
             "-=0.4"
+          )
+          .to(
+            [veenArtImageRef.current, veenSpidyImageRef.current],
+            {
+              opacity: 1,
+              duration: 0,
+            },
+            "<"
           );
       }, 2000);
     }, headerRef);
@@ -141,6 +152,18 @@ const Header = () => {
     let stretchAmount = 0;
     let animationFrame;
 
+    // Idle animation state — start idle so effect is visible on load
+    let isIdle = true;
+    let lastMouseTime = 0;
+    let idleTargetX = 0;
+    let idleTargetY = 0;
+    let idleNextChange = 0;
+    let idleStep = 0;
+    const IDLE_TIMEOUT = 2500;
+    const IDLE_STEP_INTERVAL = 380;  // time between each zig-zag point
+    const IDLE_PAUSE = 2000;         // pause after completing full zig-zag
+    const IDLE_STEPS = 6;
+
     // Trail history - store positions
     const trailLength = 8;
     const trail = Array(trailLength).fill(null).map(() => ({
@@ -162,6 +185,8 @@ const Header = () => {
     }));
 
     const handleMouseMove = (e) => {
+      isIdle = false;
+      lastMouseTime = Date.now();
       const wrapper = getVisibleWrapper();
       const rect = wrapper.getBoundingClientRect();
       targetX = e.clientX - rect.left;
@@ -225,14 +250,44 @@ const Header = () => {
     };
 
     const animate = () => {
-      const time = Date.now() * 0.001;
+      const now = Date.now();
+      const time = now * 0.001;
 
-      // Smooth movement with inertia
+      // Switch to idle if mouse has been still too long
+      if (!isIdle && now - lastMouseTime > IDLE_TIMEOUT) {
+        isIdle = true;
+      }
+
+      // Idle: zig-zag from top to bottom
+      if (isIdle) {
+        if (now > idleNextChange) {
+          const wrapper = getVisibleWrapper();
+          const rect = wrapper.getBoundingClientRect();
+          if (rect.width && rect.height) {
+            const t = idleStep / (IDLE_STEPS - 1); // 0 → 1 top to bottom
+            // Alternate left/right columns with slight random offset
+            const isLeft = idleStep % 2 === 0;
+            const xBase = isLeft ? 0.25 : 0.75;
+            const xJitter = (Math.random() - 0.5) * 0.15;
+            idleTargetX = rect.width  * (xBase + xJitter);
+            idleTargetY = rect.height * (0.1 + t * 0.8);
+            idleStep = (idleStep + 1) % IDLE_STEPS;
+          }
+          // Pause after completing the full zig-zag, quick steps in between
+          const justCompleted = idleStep === 0;
+          idleNextChange = now + (justCompleted ? IDLE_PAUSE : IDLE_STEP_INTERVAL);
+        }
+        targetX = idleTargetX;
+        targetY = idleTargetY;
+      }
+
+      // Smooth movement with inertia — faster acceleration in idle
+      const accel = isIdle ? 0.035 : 0.02;
       const dx = targetX - currentX;
       const dy = targetY - currentY;
 
-      velocityX += dx * 0.02;
-      velocityY += dy * 0.02;
+      velocityX += dx * accel;
+      velocityY += dy * accel;
       velocityX *= 0.85;
       velocityY *= 0.85;
 
@@ -305,6 +360,10 @@ const Header = () => {
 
     const container = imageRef.current;
     if (container) {
+      // Seed idle position to center of container
+      const initRect = container.getBoundingClientRect();
+      idleTargetX = currentX = targetX = initRect.width * 0.65;
+      idleTargetY = currentY = targetY = initRect.height * 0.35;
       container.addEventListener('mousemove', handleMouseMove);
       animate();
     }
