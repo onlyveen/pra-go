@@ -2,6 +2,7 @@
   padding: 200px 0 0;
   position: relative;
   z-index: 1;
+
   @include media(phone) {
     padding-top: 70px;
     display: flex;
@@ -17,17 +18,12 @@
       max-width: 90%;
     }
   }
+
   h1 {
     display: flex;
     align-items: center;
     gap: 32px;
-    &::before {
-      content: "";
-      flex: 1;
-      order: 2;
-      height: 1px;
-      background: var(--text-dark);
-    }
+
     @include media(phone) {
       flex-direction: column;
       align-items: center;
@@ -40,17 +36,21 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
+
       @include media(phone) {
         font-size: 24px;
         font-weight: bold;
         text-align: center;
       }
+
       .typing-text {
         height: 25px;
         font-size: 16px;
+
         span {
           font-weight: 400;
         }
+
         @include media(phone) {
           font-size: 18px;
         }
@@ -59,6 +59,7 @@
       .pills {
         display: flex;
         gap: 12px;
+
         small {
           display: flex;
           justify-content: center;
@@ -68,7 +69,8 @@
           font-size: 16px;
           border-radius: 32px;
           opacity: 0.5;
-          & + small {
+
+          &+small {
             &:before {
               content: "";
               display: block;
@@ -81,12 +83,15 @@
         }
       }
     }
+
     p.desig {
       order: 3;
       font-size: 16px;
+
       @include media(phone) {
         display: none;
       }
+
       .high {
         font-size: 32px;
         transform: translateY(9px);
@@ -95,11 +100,13 @@
       }
     }
   }
+
   .abstract {
     margin: 24px 0 200px;
     width: 60%;
     font-size: 18px;
     line-height: 1.6;
+
     @include media(phone) {
       width: 100%;
       margin: 0 0 70px;
@@ -107,24 +114,30 @@
       font-size: 14px;
     }
   }
+
   .actions {
     display: none;
     gap: 12px;
+
     // margin-top: 64px;
     @include media(phone) {
       margin-top: 24px;
       padding-bottom: 64px;
+
       a {
         flex: 1 0 0;
       }
     }
   }
+
   .abs {
     position: relative;
     margin-top: 100px;
+
     @include media(phone) {
       margin-top: 50px;
     }
+
     .h2 {
       position: relative;
       right: 0;
@@ -147,6 +160,7 @@
       gap: 0px;
       justify-content: center;
       letter-spacing: -2vw;
+
       span {
         will-change: filter, opacity;
       }
@@ -160,7 +174,8 @@
         flex-wrap: wrap;
         line-height: 0.8;
         justify-content: flex-start;
-        font-size: 40vw;
+        font-size: 35vw !important;
+        height: auto !important;
 
         .mobile-break {
           display: flex;
@@ -182,6 +197,7 @@
         width: 100%;
         right: -30%;
       }
+
       @include media(breakpoint-md-phone) {
         width: 60%;
       }

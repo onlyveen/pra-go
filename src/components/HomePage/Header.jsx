@@ -1,10 +1,11 @@
-import React, { useEffect, useRef, useMemo } from "react";
+import React, { useEffect, useRef, useMemo, useState } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import veenArt from "@images/header/veen-art.png";
 import veenSpidy from "@images/header/veen-spidy.png";
 import veenPic from "@images/header/veen-pic.png";
 import TypingText from "../TypingText";
+import DecryptedText from "../DecryptedText";
 
 const Header = () => {
   const headerRef = useRef(null);
@@ -13,6 +14,7 @@ const Header = () => {
   const abstractRef = useRef(null);
   const actionsRef = useRef(null);
   const designerTextRef = useRef(null);
+  const [cycleCount, setCycleCount] = useState(0);
   const veenPicImageRef = useRef(null);
   const veenArtImageRef = useRef(null);
   const veenSpidyImageRef = useRef(null);
@@ -59,12 +61,11 @@ const Header = () => {
           duration: 0.8,
         })
           .from(
-            designerTextRef.current?.children,
+            designerTextRef.current,
             {
               opacity: 0,
               filter: "blur(20px)",
               duration: 0.8,
-              stagger: 0.08,
               ease: "power2.out",
             },
             "<"
@@ -121,6 +122,12 @@ const Header = () => {
     }, headerRef);
 
     return () => ctx.revert();
+  }, []);
+
+  // Cycle DESIGNER → DEVELOPER every 4s
+  useEffect(() => {
+    const id = setInterval(() => setCycleCount((c) => c + 1), 4000);
+    return () => clearInterval(id);
   }, []);
 
   // Water droplet wiggle effect
@@ -499,15 +506,24 @@ const Header = () => {
           </div>
         </div>
 
-        <h1 className="designer-text" ref={designerTextRef}>
-          {"DESIGNER".split("").map((letter, index) => (
-            <React.Fragment key={index}>
-              <span style={{ display: "inline-block" }} className="pixel-font">
-                {letter}
-              </span>
-              {(index === 2 || index === 5) && <div className="mobile-break"></div>}
-            </React.Fragment>
-          ))}
+        <h1
+          className="designer-text"
+          ref={designerTextRef}
+          style={{
+            fontSize: `${25 * (8 / (cycleCount % 2 === 0 ? 8 : 10))}vw`,
+            letterSpacing: `${-2 * (8 / (cycleCount % 2 === 0 ? 8 : 10))}vw`,
+            height: "calc(25vw * 0.677)",
+          }}
+        >
+          <DecryptedText
+            key={cycleCount}
+            text={cycleCount % 2 === 0 ? "DESIGNER" : "DEVELOPER"}
+            speed={50}
+            delay={cycleCount === 0 ? 2200 : 0}
+            className="pixel-font"
+            encryptedClassName="pixel-font"
+            breaks={[2, 5]}
+          />
         </h1>
       </div>
     </div>
