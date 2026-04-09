@@ -174,7 +174,6 @@
         flex-wrap: wrap;
         line-height: 0.8;
         justify-content: flex-start;
-        font-size: 35vw !important;
         height: auto !important;
 
         .mobile-break {
@@ -182,6 +181,10 @@
           width: 100%;
           flex-basis: 100%;
         }
+
+        .mobile-l0 { font-size: 40vw; }
+        .mobile-l1 { font-size: 36vw; }
+        .mobile-l2 { font-size: 32.4vw; }
       }
     }
 

@@ -40,17 +40,21 @@ export default function DecryptedText({ text, speed = 50, delay = 0, className =
 
   return (
     <span aria-label={text} style={{ display: "contents" }}>
-      {displayed.split("").map((char, i) => (
-        <span key={i} style={{ display: "contents" }}>
-          <span
-            style={{ display: "inline-block" }}
-            className={revealed.has(i) || (!animating && displayed === text) ? className : encryptedClassName}
-          >
-            {char}
+      {displayed.split("").map((char, i) => {
+        const line = breaks.filter((b) => i > b).length;
+        const isRevealed = revealed.has(i) || (!animating && displayed === text);
+        return (
+          <span key={i} style={{ display: "contents" }}>
+            <span
+              style={{ display: "inline-block" }}
+              className={`${isRevealed ? className : encryptedClassName} mobile-l${line}`}
+            >
+              {char}
+            </span>
+            {breaks.includes(i) && <div className="mobile-break" />}
           </span>
-          {breaks.includes(i) && <div className="mobile-break" />}
-        </span>
-      ))}
+        );
+      })}
     </span>
   );
 }
