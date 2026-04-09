@@ -410,7 +410,7 @@ const Header = () => {
   return (
     <div className="header" ref={headerRef}>
       <div className="container">
-        <h1>
+        <h1 className="main">
           <p className="title" ref={titleRef}>
             <span>
               Hello There 👋
@@ -426,7 +426,7 @@ const Header = () => {
             </span> */}
           </p>
           <p className="desig">
-            <span className="high">*</span> Principal Designer
+            <span className="high">*</span> Principal Designer Engineer
           </p>
         </h1>
         <p className="abstract" ref={abstractRef}>
