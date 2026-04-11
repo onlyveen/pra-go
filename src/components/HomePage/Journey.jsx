@@ -11,7 +11,7 @@ const experience = [
   {
     role: "Principal Designer",
     company: "AntStack Technologies",
-    period: "Nov 2018 – Present",
+    period: "Nov 2019 – Present",
     logo: "/images/exp/antstackio_logo.jpeg",
     bg: "linear-gradient(341deg, #042582 1.79%, #345ACA 80.27%)",
     stringColor: "#345ACA",
