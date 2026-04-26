@@ -7,11 +7,24 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-const experience = [
+const HASHEDIN_LIVE_DATE = new Date("2026-06-01");
+const ANTSTACK_END_DATE = new Date("2026-06-01");
+
+const allExperience = [
+  {
+    role: "Tech Architect",
+    company: "Hashedin by Deloitte",
+    period: "Jun 2026 – Present",
+    logo: "/images/exp/deloitte_logo.jpg",
+    bg: "#86BC26",
+    stringColor: "#86BC26",
+    textColor: "#000000",
+    desc: "Driving end-to-end technical architecture and design strategy, leading cross-functional teams to deliver scalable, high-impact digital products at Hashedin by Deloitte.",
+  },
   {
     role: "Principal Designer",
     company: "AntStack Technologies",
-    period: "Nov 2019 – Present",
+    period: new Date() < ANTSTACK_END_DATE ? "Nov 2019 – Present" : "Nov 2019 – May 2026",
     logo: "/images/exp/antstackio_logo.jpeg",
     bg: "linear-gradient(341deg, #042582 1.79%, #345ACA 80.27%)",
     stringColor: "#345ACA",
@@ -60,8 +73,13 @@ const experience = [
   },
 ];
 
+const experience =
+  new Date() >= HASHEDIN_LIVE_DATE
+    ? allExperience
+    : allExperience.filter((e) => e.company !== "Hashedin by Deloitte");
+
 // Each card gets its own string length for a natural, uneven hanging look
-const STRING_HEIGHTS = [100, 160, 120, 200, 130];
+const STRING_HEIGHTS = [80, 100, 160, 120, 200, 130];
 
 const Journey = () => {
   const sectionRef = useRef(null);
@@ -87,10 +105,11 @@ const Journey = () => {
         gsap.set(wraps, { transformOrigin: "50% 0" });
 
         // Each card gets a unique swing feel — different speed and sensitivity
-        const ROT_FACTORS = [1.0, 0.55, 1.3, 0.7, 1.1];
-        const ROT_DURATIONS = [0.3, 0.55, 0.25, 0.65, 0.4];
+        const ROT_FACTORS = [0.85, 1.0, 0.55, 1.3, 0.7, 1.1];
+        const ROT_DURATIONS = [0.45, 0.3, 0.55, 0.25, 0.65, 0.4];
         // Per-card ambient wind: freq (rad/ms), amplitude (deg), phase offset
         const WIND = [
+          { freq: 0.00070, amp: 0.28, phase: 3.5 },
           { freq: 0.00080, amp: 0.36, phase: 0.0 },
           { freq: 0.00055, amp: 0.21, phase: 1.1 },
           { freq: 0.00100, amp: 0.45, phase: 2.3 },
