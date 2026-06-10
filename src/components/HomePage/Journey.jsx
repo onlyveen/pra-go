@@ -8,7 +8,7 @@ if (typeof window !== "undefined") {
 }
 
 const HASHEDIN_LIVE_DATE = new Date("2026-06-01");
-const ANTSTACK_END_DATE = new Date("2026-06-01");
+
 
 const allExperience = [
   {
@@ -24,7 +24,7 @@ const allExperience = [
   {
     role: "Principal Designer",
     company: "AntStack Technologies",
-    period: new Date() < ANTSTACK_END_DATE ? "Nov 2019 – Present" : "Nov 2019 – May 2026",
+    period: "Nov 2019 – May 2026",
     logo: "/images/exp/antstackio_logo.jpeg",
     bg: "linear-gradient(341deg, #042582 1.79%, #345ACA 80.27%)",
     stringColor: "#345ACA",
@@ -73,10 +73,7 @@ const allExperience = [
   },
 ];
 
-const experience =
-  new Date() >= HASHEDIN_LIVE_DATE
-    ? allExperience
-    : allExperience.filter((e) => e.company !== "Hashedin by Deloitte");
+
 
 // Each card gets its own string length for a natural, uneven hanging look
 const STRING_HEIGHTS = [80, 100, 160, 120, 200, 130];
@@ -220,7 +217,7 @@ const Journey = () => {
       {/* Horizontal scrolling track */}
       <div className="journey-track-outer">
         <div className="journey-track" ref={trackRef}>
-          {experience.map((exp, i) => (
+          {allExperience.map((exp, i) => (
             <div className="jc-wrap" key={i}>
               {/* Hanging string */}
               <div
@@ -241,7 +238,7 @@ const Journey = () => {
                 >
                   <div className="idc-header-top">
                     <span className="idc-num" style={{ color: exp.textColor }}>
-                      0{experience.length - i}
+                      0{allExperience.length - i}
                     </span>
                     <Image
                       src={exp.logo}
