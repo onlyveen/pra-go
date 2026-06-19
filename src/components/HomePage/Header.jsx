@@ -36,11 +36,11 @@ const Header = () => {
   }, []);
 
   const words = [
-    "🎯 Branding Expert",
-    "💡 User Experience Designer",
-    "🎨 Visual Designer",
-    "✨ User Interface Designer",
-    "🕸️ Web Developer",
+    "⚙️ Tech Architect",
+    "🎨 Design Systems Lead",
+    "🏗️ Frontend Architect",
+    "💡 UI/UX Designer",
+    "🤖 AI-Augmented Engineer",
     "📸 Photoholic",
   ];
 
@@ -426,12 +426,13 @@ const Header = () => {
             </span> */}
           </p>
           <p className="desig">
-            <span className="high">*</span> Principal Designer Engineer
+            <span className="high">*</span> Tech Architect
           </p>
         </h1>
         <p className="abstract" ref={abstractRef}>
-          a passionate designer focused on crafting impactful experiences . My
-          work spans branding, UI/UX design, & web development.
+          I code as fluently as I design — bridging pixel-perfect UI craft with
+          scalable frontend architecture, design systems, & GenAI-powered
+          workflows. 11+ years of building things that look great and last.
         </p>
         <div className="actions" ref={actionsRef}>
           <a

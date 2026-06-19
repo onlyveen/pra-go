@@ -40,22 +40,33 @@ const ContactCard = () => (
 );
 
 const skills = {
-  design: [
-    "UI/UX Design",
-    "User Research",
-    "Design Systems",
-    "Visual Identity",
-    "Branding",
-    "Prompt Engineering",
-    "AI-Augmented Design & Workflows",
-  ],
   frontend: [
+    "Component-Driven Development",
+    "Design-to-Code Pipelines",
+    "AI-Augmented Engineering",
+    "Agentic AI Integration",
     "HTML & CSS",
+    "Prompt Engineering",
     "JavaScript (ES6+)",
     "React.js and Frameworks",
     "Tailwind CSS",
-    "GSAP",
     "Shadcn UI",
+    "Micro-Frontend Architecture",
+    "GSAP",
+    "Design System Governance",
+  ],
+  design: [
+    "UI/UX Design",
+    "User Research",
+    "Visual Identity & Branding",
+    "Design Systems",
+    "UI Prototyping",
+    "Micro-interactions",
+    "Iconography",
+    "Responsive Design",
+    "High-Fidelity",
+    "MVPs & POCs",
+    "AI Design Work Flows",
   ],
   tools: [
     "Figma",
@@ -70,10 +81,11 @@ const skills = {
     "Notion",
   ],
   leadership: [
-    "Design Leadership",
-    "Cross-Functional Collaboration",
+    "Technical Roadmapping",
+    "Frontend Architecture Leadership",
     "Stakeholder Management",
     "Team Enablement & Mentorship",
+    "Cross-Functional Collaboration",
     "Storytelling",
     "Pitching",
     "Creative Problem Solving",
@@ -100,13 +112,23 @@ const education = [
 
 const experience = [
   {
-    role: "Principal Designer | AntStack Technologies",
-    period: "Nov 2018 - Present",
+    role: "Tech Architect | HashedIn by Deloitte",
+    period: "Jun 2026 - Present",
     bullets: [
-      "Pioneered AI-Integrated Workflows: Introduced Generative AI tools into the design phase, reducing UI ideation time by 40% while maintaining brand consistency.",
-      'Architected "Smart" Design Systems: Developed and maintained a scalable React-based design system in Figma, ensuring 100% component parity between design and code.',
-      "Stakeholder Leadership: Collaborate with product managers to define AI-driven feature sets, from personalized onboarding to intelligent data visualization.",
-      "Frontend Optimization: Oversee the development of user-facing features, ensuring maximum speed, scalability, and accessibility.",
+      "Architect micro-frontend platforms for enterprise clients, owning system design and CI/CD integration end-to-end.",
+      "Lead GenAI integrations into frontend workflows, cutting ideation-to-prototype cycles by 40%.",
+      'Build "AI-first" component systems bridging high-fidelity Figma design and production React code.',
+      "Define technical roadmaps and present architecture proposals to C-suite and product stakeholders.",
+    ],
+  },
+  {
+    role: "Principal Designer | AntStack Technologies",
+    period: "Nov 2019 - May 2026",
+    bullets: [
+      "Pioneered GenAI engineering workflows, cutting ideation-to-prototype cycles by 40% while maintaining design system consistency.",
+      "Architected an enterprise design system with Storybook and Chromatic, achieving 100% component parity between Figma and production code.",
+      "Led technical roadmapping and stakeholder presentations, translating business requirements into scalable engineering decisions.",
+      "Owned micro-frontend platform architecture end-to-end, including component governance, CI/CD, and accessibility compliance.",
     ],
   },
   {
@@ -179,7 +201,7 @@ const ResumePage = () => {
                     <br />
                     GORAKALA
                   </h2>
-                  <p className="rui-title">Principal Designer</p>
+                  <p className="rui-title">Tech Architect &amp; Frontend Engineer</p>
                 </div>
 
                 <div className="rui-photo-block">
@@ -211,11 +233,13 @@ const ResumePage = () => {
 
               {/* ── Bio ── */}
               <p className="rui-bio">
-                Strategic Principal Designer with 11+ years of experience
-                scaling design operations through Generative AI and frontend
-                architecture. At Antstack, I fuse AI workflows with React to
-                deliver intelligent UIs, building "AI-first" design systems that
-                bridge high-fidelity UX and production-ready code.
+                Frontend Architect with 11+ years of experience engineering
+                scalable React systems, AI-augmented design pipelines, and
+                production-ready design systems. At HashedIn by Deloitte, I
+                architect micro-frontend platforms, lead GenAI integrations
+                using leading LLM&apos;s, and build &quot;AI-first&quot;
+                component systems that bridge high-fidelity UX and
+                enterprise-grade code.
               </p>
 
               {/* ── Body: sidebar + main ── */}
@@ -231,10 +255,10 @@ const ResumePage = () => {
 
                     <div className="rui-skill-group">
                       <p className="rui-skill-label">
-                        Product design, strategy &amp; branding
+                        Frontend Architecture &amp; Engineering
                       </p>
                       <div className="rui-tags">
-                        {skills.design.map((s) => (
+                        {skills.frontend.map((s) => (
                           <span key={s} className="rui-tag">
                             {s}
                           </span>
@@ -243,9 +267,11 @@ const ResumePage = () => {
                     </div>
 
                     <div className="rui-skill-group">
-                      <p className="rui-skill-label">Frontend</p>
+                      <p className="rui-skill-label">
+                        Product design, strategy &amp; branding
+                      </p>
                       <div className="rui-tags">
-                        {skills.frontend.map((s) => (
+                        {skills.design.map((s) => (
                           <span key={s} className="rui-tag">
                             {s}
                           </span>
@@ -282,24 +308,6 @@ const ResumePage = () => {
                 {/* Right main */}
                 <div className="rui-main">
                   <div className="rui-section">
-                    <h3 className="rui-section-title">EDUCATION</h3>
-                    <div className="rui-timeline">
-                      {education.map((e, i) => (
-                        <div key={i} className="rui-timeline-item">
-                          <div className="rui-dot" />
-                          <div className="rui-timeline-content">
-                            <p className="rui-item-title">{e.school}</p>
-                            <div className="rui-item-meta">
-                              <span>{e.degree}</span>
-                              <span>{e.period}</span>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="rui-section">
                     <h3 className="rui-section-title">EXPERIENCE</h3>
                     <div className="rui-timeline">
                       {experience.map((e, i) => (
@@ -320,7 +328,24 @@ const ResumePage = () => {
                       ))}
                     </div>
                   </div>
-                 
+                  <div className="rui-section">
+                    <h3 className="rui-section-title">EDUCATION</h3>
+                    <div className="rui-timeline">
+                      {education.map((e, i) => (
+                        <div key={i} className="rui-timeline-item">
+                          <div className="rui-dot" />
+                          <div className="rui-timeline-content">
+                            <p className="rui-item-title">{e.school}</p>
+                            <div className="rui-item-meta">
+                              <span>{e.degree}</span>
+                              <span>{e.period}</span>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
                 </div>
               </div>
             </div>

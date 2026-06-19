@@ -22,14 +22,14 @@ const allExperience = [
     desc: "Driving end-to-end technical architecture and design strategy, leading cross-functional teams to deliver scalable, high-impact digital products at Hashedin by Deloitte.",
   },
   {
-    role: "Principal Designer",
-    company: "AntStack Technologies",
+    role: "Lead Engineer / Frontend Architect",
+    company: "HashedIn by Deloitte",
     period: "Nov 2019 – May 2026",
     logo: "/images/exp/antstackio_logo.jpeg",
     bg: "linear-gradient(341deg, #042582 1.79%, #345ACA 80.27%)",
     stringColor: "#345ACA",
     textColor: "#ffffff",
-    desc: "Led design at AntStack, introducing AI tools that cut ideation time by 40%. Built a scalable React design system, collaborated on AI-driven features, and oversaw frontend development for speed, scalability, and accessibility.",
+    desc: "Architected enterprise React design systems achieving 100% Figma-to-code parity. Led GenAI integrations with GPT-4 & Claude APIs cutting UI cycles by 40%. Shipped 7+ named products across logistics, fintech, edtech, and events.",
   },
   {
     role: "UI Engineer",

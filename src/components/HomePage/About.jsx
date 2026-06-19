@@ -111,12 +111,13 @@ const About = () => {
       <div className="container">
         <h2 className="subTitle" ref={titleRef}>Me</h2>
         <p ref={textRef}>
-          I thrive on turning ideas into Effective Solutions with captivating
-          Visuals. My design philosophy revolves around minimalism, elegance,
-          and impact. Whether it's crafting brand identities, designing
-          intuitive interfaces, or building responsive websites, I'm all in.
+          I thrive at the intersection of design and engineering. I craft
+          pixel-perfect UIs and scalable micro-frontend systems with equal care —
+          token-driven design systems, GenAI-augmented workflows, and brand
+          identities that hold up from Figma to production. If it needs to look
+          great and scale, I'm all in.
         </p>
-        <div className="icons" ref={iconsRef}>
+        {/* <div className="icons" ref={iconsRef}>
           <span>
             <Image loading="lazy" src={branding} alt="Branding" />
             <small>Branding</small>
@@ -129,7 +130,7 @@ const About = () => {
             <Image loading="lazy" src={web} alt="Web Develepment" />
             <small>Web Dev</small>
           </span>
-        </div>
+        </div> */}
       </div>
 
       <CircleItems items={items} />
