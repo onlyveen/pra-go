@@ -22,7 +22,7 @@ const allExperience = [
     desc: "Driving end-to-end technical architecture and design strategy, leading cross-functional teams to deliver scalable, high-impact digital products at Hashedin by Deloitte.",
   },
   {
-    role: "Lead Engineer / Frontend Architect",
+    role: "Frontend Architect & Principal Designer",
     company: "HashedIn by Deloitte",
     period: "Nov 2019 – May 2026",
     logo: "/images/exp/antstackio_logo.jpeg",
