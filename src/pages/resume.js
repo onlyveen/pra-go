@@ -122,7 +122,7 @@ const experience = [
     ],
   },
   {
-    role: "Principal Designer | AntStack Technologies",
+    role: "Frontend Architect & Principal Designer | AntStack Technologies",
     period: "Nov 2019 - May 2026",
     bullets: [
       "Pioneered AI-powered design-to-code workflows, reducing ideation-to-prototype time by 40% while improving developer productivity.",
