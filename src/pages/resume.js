@@ -125,10 +125,12 @@ const experience = [
     role: "Principal Designer | AntStack Technologies",
     period: "Nov 2019 - May 2026",
     bullets: [
-      "Pioneered GenAI engineering workflows, cutting ideation-to-prototype cycles by 40% while maintaining design system consistency.",
-      "Architected an enterprise design system with Storybook and Chromatic, achieving 100% component parity between Figma and production code.",
-      "Led technical roadmapping and stakeholder presentations, translating business requirements into scalable engineering decisions.",
-      "Owned micro-frontend platform architecture end-to-end, including component governance, CI/CD, and accessibility compliance.",
+      "Pioneered AI-powered design-to-code workflows, reducing ideation-to-prototype time by 40% while improving developer productivity.",
+      "Architected scalable frontend solutions and enterprise design systems for SaaS products using React, Next.js, TypeScript, and Tailwind CSS.",
+      "Built reusable component libraries with Storybook and modern frontend architecture, ensuring consistency between Figma and production.",
+      "Defined technical roadmaps, frontend architecture, and engineering standards while collaborating with product, design, and leadership teams.",
+      "Mentored cross-functional teams, driving accessibility, performance optimization, and scalable UI engineering best practices.",
+
     ],
   },
   {
@@ -201,7 +203,7 @@ const ResumePage = () => {
                     <br />
                     GORAKALA
                   </h2>
-                  <p className="rui-title">Tech Architect &amp; Frontend Engineer</p>
+                  <p className="rui-title">Frontend Architect & Principal Designer</p>
                 </div>
 
                 <div className="rui-photo-block">
@@ -215,10 +217,10 @@ const ResumePage = () => {
 
                 <div className="rui-contacts">
                   <a
-                    href="mailto:praveengorakala@gmail.com"
+                    href="mailto:thepraveengorakala@gmail.com"
                     className="rui-contact-link"
                   >
-                    praveengorakala@gmail.com
+                    thepraveengorakala@gmail.com
                   </a>
                   <a
                     href="https://praveengorakala.com"
@@ -233,13 +235,7 @@ const ResumePage = () => {
 
               {/* ── Bio ── */}
               <p className="rui-bio">
-                Frontend Architect with 11+ years of experience engineering
-                scalable React systems, AI-augmented design pipelines, and
-                production-ready design systems. At HashedIn by Deloitte, I
-                architect micro-frontend platforms, lead GenAI integrations
-                using leading LLM&apos;s, and build &quot;AI-first&quot;
-                component systems that bridge high-fidelity UX and
-                enterprise-grade code.
+                Frontend Architect & Principal Designer with 11+ years of experience delivering scalable web applications, enterprise design systems, AI-powered development workflows, and high-performance frontend architectures. Experienced in leading cross-functional teams, architecting modern React ecosystems, and bridging product strategy, UX, and engineering to build scalable digital experiences. Passionate about leveraging AI, automation, and design systems to accelerate product development while maintaining exceptional user experiences.
               </p>
 
               {/* ── Body: sidebar + main ── */}
