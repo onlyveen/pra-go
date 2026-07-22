@@ -29,7 +29,7 @@ const allExperience = [
     bg: "linear-gradient(341deg, #042582 1.79%, #345ACA 80.27%)",
     stringColor: "#345ACA",
     textColor: "#ffffff",
-    desc: "Architected enterprise React design systems achieving 100% Figma-to-code parity. Led GenAI integrations with GPT-4 & Claude APIs cutting UI cycles by 40%. Shipped 7+ named products across logistics, fintech, edtech, and events.",
+    desc: "Served as Frontend Architect and Principal Designer, pioneering AI-powered design-to-code workflows that cut prototype time 40% while architecting enterprise design systems with React, Next.js & Tailwind, and mentoring cross-functional teams.",
   },
   {
     role: "UI Engineer",
