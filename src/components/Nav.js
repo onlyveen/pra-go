@@ -143,8 +143,8 @@ const Nav = ({ scroll }) => {
           </a>
         </li>
         <li>
-          <a className="pixel-font" href="/#my-writings">
-            My Writings
+          <a className="pixel-font" href="/blog">
+            My Blog
           </a>
         </li>
         <li>

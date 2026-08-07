@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useRef } from "react";
-import Airtable from "airtable";
-import Image from "next/image";
+import React, { useEffect, useRef } from "react";
+import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
@@ -9,10 +8,7 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-const Writings = () => {
-  const [writings, setWritings] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+const Writings = ({ writings = [] }) => {
   const writingsRef = useRef(null);
   const titleRef = useRef(null);
   const cardsRef = useRef([]);
@@ -52,31 +48,9 @@ const Writings = () => {
     };
   }, []);
 
-  useEffect(() => {
-    const personalAccessToken =
-      "patIjXB3MBHdk1jaO.a5548ae54bc6e860eaaae0fe12028a763c71a28338402ecfa8826967c3376ea3";
-    const baseId = "appr5I664V8E3bx2w"; // Replace with your actual Base ID
-
-    const base = new Airtable({ apiKey: personalAccessToken }).base(baseId);
-
-    base("PraGoWritings")
-      .select({
-        view: "Grid view", // Adjust view name if necessary
-      })
-      .all()
-      .then((records) => {
-        setWritings(records.map((record) => record.fields));
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err);
-        setLoading(false);
-      });
-  }, []);
-
   // GSAP animations for Writings section
   useEffect(() => {
-    if (!loading && writings.length > 0) {
+    if (writings.length > 0) {
       const ctx = gsap.context(() => {
         // Animate section title
         gsap.from(titleRef.current, {
@@ -111,20 +85,9 @@ const Writings = () => {
 
       return () => ctx.revert();
     }
-  }, [loading, writings]);
+  }, [writings]);
 
-  if (loading)
-    return (
-      <div className="writings-section" id="my-writings">
-        <div className="loading inline"></div>
-      </div>
-    );
-  if (error)
-    return (
-      <div className="writings-section" id="my-writings">
-        <div>Error: {error.message}</div>
-      </div>
-    );
+  if (writings.length === 0) return null;
 
   return (
     <div className="writings-section" id="my-writings" ref={writingsRef}>
@@ -132,20 +95,18 @@ const Writings = () => {
         <h2 className="subTitle" ref={titleRef}>My Writings</h2>
 
         {writings.map((blog, index) => (
-          <a
-            href={blog.blogLink}
-            key={index}
-            target="_blank"
+          <Link
+            href={`/blog/${blog.slug}`}
+            key={blog.slug}
             className="blog-card"
             ref={(el) => (cardsRef.current[index] = el)}
           >
             <div className="blog-thumb">
-              {blog.thumbnail && blog.thumbnail[0] && (
-                <img src={blog.thumbnail[0].url} alt={blog.name} />
-              )}
+              {blog.thumbnail && <img src={blog.thumbnail} alt={blog.title} />}
             </div>
             <div className="blog-details">
-              <h2>{blog.name}</h2>
+              <h2>{blog.title}</h2>
+              <div className="blog-meta">{blog.readingTime} min read</div>
               <p>
                 {blog.abstract.slice(0, 200)}
                 {blog.abstract.length >= 200 && (
@@ -164,35 +125,9 @@ const Writings = () => {
                   ))}
               </div>
             </div>
-          </a>
+          </Link>
         ))}
       </div>
-    </div>
-  );
-};
-
-const SampleNextArrow = (props) => {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{ ...style, display: "block" }}
-      onClick={onClick}
-    >
-      <Image loading="lazy" src={next} alt="Slick Next" />
-    </div>
-  );
-};
-
-const SamplePrevArrow = (props) => {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{ ...style, display: "block" }}
-      onClick={onClick}
-    >
-      <Image loading="lazy" src={prev} alt="Slick Prev" />
     </div>
   );
 };

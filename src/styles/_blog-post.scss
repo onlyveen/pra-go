@@ -1,0 +1,152 @@
+.blog-progress-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  z-index: 1000;
+  background: transparent;
+
+  .blog-progress-bar-fill {
+    height: 100%;
+    background: var(--color-primary);
+    width: 0%;
+    transition: width 0.1s ease-out;
+  }
+}
+
+.blog-post {
+  color: var(--text-dark);
+  position: relative;
+  padding: 160px 0 100px;
+
+  @include media(phone) {
+    padding: 20px 0 50px;
+  }
+
+  .container {
+    max-width: 760px;
+
+    @include media(phone) {
+      padding: 15px;
+    }
+  }
+
+  .blog-post-back {
+    display: inline-block;
+    margin-bottom: 32px;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .blog-post-thumb {
+    margin-bottom: 32px;
+
+    img {
+      width: 100%;
+      border-radius: 16px;
+    }
+  }
+
+  h1 {
+    font-size: 42px;
+    line-height: 1.15;
+    margin-bottom: 12px;
+
+    @include media(phone) {
+      font-size: 28px;
+    }
+  }
+
+  .blog-post-meta {
+    opacity: 0.6;
+    margin-bottom: 16px;
+  }
+
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 32px;
+
+    small {
+      display: flex;
+      padding: 4px 12px;
+      justify-content: center;
+      align-items: center;
+      font-size: 12px;
+      font-weight: 400;
+      border-radius: 32px;
+      border: 1px solid var(--text-dark);
+    }
+  }
+
+  .blog-post-content {
+    font-size: 18px;
+    line-height: 1.7;
+
+    h2,
+    h3,
+    h4 {
+      margin: 32px 0 16px;
+      line-height: 1.3;
+    }
+
+    p {
+      margin: 16px 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: underline;
+    }
+
+    ul,
+    ol {
+      margin: 16px 0;
+      padding-left: 24px;
+    }
+
+    li {
+      margin: 8px 0;
+    }
+
+    code {
+      background: rgba(0, 0, 0, 0.06);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+
+    pre {
+      background: rgba(0, 0, 0, 0.06);
+      padding: 16px;
+      border-radius: 10px;
+      overflow-x: auto;
+      margin: 16px 0;
+
+      code {
+        background: none;
+        padding: 0;
+      }
+    }
+
+    blockquote {
+      border-left: 3px solid var(--text-dark);
+      padding-left: 16px;
+      opacity: 0.85;
+      margin: 16px 0;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin: 16px 0;
+    }
+  }
+}

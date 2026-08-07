@@ -19,10 +19,10 @@ function MyApp({ Component, pageProps }) {
       `}</style>
       <Component {...pageProps} />
       <Head>
-        <title>Praveen Gorakala - Principal Designer</title>
+        <title>Praveen Gorakala - Frontend Architect & Principal Designer</title>
         <meta
           name="description"
-          content="Praveen Gorakala is a passionate designer focused on crafting impactful experiences in branding, UI/UX design, and web development."
+          content="Praveen Gorakala is a Frontend Architect & Principal Designer focused on crafting impactful experiences in branding, UI/UX design, and web development."
         />
         <link rel="icon" href="/favicon.png" />
 
@@ -31,11 +31,11 @@ function MyApp({ Component, pageProps }) {
         <meta property="og:url" content="https://praveengorakala.com/" />
         <meta
           property="og:title"
-          content="Praveen Gorakala - Principal Designer"
+          content="Praveen Gorakala - Frontend Architect & Principal Designer"
         />
         <meta
           property="og:description"
-          content="Praveen Gorakala is a passionate designer focused on crafting impactful experiences in branding, UI/UX design, and web development."
+          content="Praveen Gorakala is a Frontend Architect & Principal Designer focused on crafting impactful experiences in branding, UI/UX design, and web development."
         />
         <meta
           property="og:image"
@@ -47,11 +47,11 @@ function MyApp({ Component, pageProps }) {
         <meta property="twitter:url" content="https://praveengorakala.com/" />
         <meta
           property="twitter:title"
-          content="Praveen Gorakala - Principal Designer"
+          content="Praveen Gorakala - Frontend Architect & Principal Designer"
         />
         <meta
           property="twitter:description"
-          content="Praveen Gorakala is a passionate designer focused on crafting impactful experiences in branding, UI/UX design, and web development."
+          content="Praveen Gorakala is a Frontend Architect & Principal Designer focused on crafting impactful experiences in branding, UI/UX design, and web development."
         />
         <meta
           property="twitter:image"
