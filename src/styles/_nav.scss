@@ -10,8 +10,10 @@
   top: 0;
   z-index: 999;
   transition: all 0.35s;
-    .logo-menu {
-          display: none;}
+
+  .logo-menu {
+    display: none;
+  }
 
   .spiderman-theme & {
     .logo-svg {
@@ -22,6 +24,7 @@
       }
     }
   }
+
   @include media(phone) {
     background: transparent;
     backdrop-filter: none;
@@ -33,23 +36,28 @@
     justify-content: flex-end;
     padding: 0 10px 10px 0;
   }
+
   &.visible {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     background: rgba(21, 21, 21, 0.05);
     backdrop-filter: blur(25px);
+
     @include media(phone) {
       background: transparent;
 
       backdrop-filter: none;
     }
+
     img {
       height: 50px;
     }
   }
+
   .logo {
     display: flex;
     align-items: center;
     gap: 8px;
+
     img {
       transition: all 0.35s;
       width: auto;
@@ -57,22 +65,27 @@
 
     &:hover {
       animation: jigelbg 0.5s steps(1, start) infinite;
+
       span {
         animation: jigelspan 0.5s steps(1, start) infinite;
+
         b {
           animation: jigelb 0.5s steps(1, start) infinite;
         }
       }
     }
+
     @include media(phone) {
       display: none;
     }
+
     @include media(tablet) {
       img {
         height: 50px !important;
         width: auto;
       }
     }
+
     span {
       text-transform: uppercase;
       font-family: var(--font-head);
@@ -83,6 +96,7 @@
       @include media(phone) {
         font-size: 24px;
       }
+
       b {
         color: var(--color-primary);
       }
@@ -92,14 +106,17 @@
   .burgerMenu {
     display: flex;
     display: none;
-    height: 30px;
-    width: 30px;
+    height: 60px;
+    width: 60px;
+    padding: 15px;
     gap: 10px;
     flex-wrap: wrap;
     transition: all 0.25s;
     background: var(--text-dark);
-    box-shadow: 0 0 0 10px var(--text-dark);
-    border-radius: 5px 0 0 0;
+    border-radius: 0 0 0 10px;
+    position: fixed;
+    top: 0;
+    right: 0;
 
     span {
       height: 10px;
@@ -112,19 +129,22 @@
     }
 
     &.open {
-      height: 40px;
-      width: 40px;
+      height: 70px;
+      width: 70px;
+      padding-top: 20px;
       gap: 0;
-      transform: translate(0px, 10px);
+
       span {
         height: 5px;
         width: 20px;
         border: none;
         background: var(--color-bg);
+
         &:nth-child(1),
         &:nth-child(4) {
           transform: rotate(45deg);
         }
+
         &:nth-child(2),
         &:nth-child(3) {
           transform: rotate(-45deg);
@@ -146,12 +166,16 @@
       color: var(--text-dark);
       white-space: nowrap;
     }
+
     &.dark {
-      li, li a:not(.btn) {
+
+      li,
+      li a:not(.btn) {
         color: var(--text-bright);
       }
     }
   }
+
   @include media(phone) {
     .burgerMenu {
       display: flex;
@@ -171,6 +195,7 @@
       border-radius: 0;
       transition: all 0.35s;
       overflow: hidden;
+
       &.open {
         height: 100vh;
         padding: 200px 32px 200px;
@@ -181,22 +206,28 @@
       li {
         font-size: 48px;
         font-weight: 900;
+
         .logo-menu {
           @include media(phone) {
             display: block;
+            margin-top: 100px;
           }
+
           svg {
             path.highlight {
               fill: #fff !important;
             }
           }
         }
+
         a {
           color: var(--text-bright);
         }
+
         &:last-child {
           margin-top: auto;
         }
+
         .btn {
           padding: 16px 48px;
           height: auto;
