@@ -195,16 +195,13 @@
       border-radius: 0;
       transition: all 0.35s;
       overflow: hidden;
-      padding: 200px 32px 200px;
       align-items: flex-start;
       justify-content: flex-end;
-      padding: 25px;
       gap: 25px;
 
       &.open {
+        padding: 25px;
         height: 100vh;
-
-
       }
 
       li {
