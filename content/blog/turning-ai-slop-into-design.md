@@ -43,7 +43,8 @@ Before I even opened ChatGPT for the Divra Boutique project, two things were alr
 
 Only after this, AI came into the picture. And I was not asking it to create a brand. I was asking it to extend a brand that already had a backbone.
 
-That flip is everything. If you ask AI for an identity, you will get slop with no centre. If you give AI an identity and ask it to explore applications, you will get hundred usable directions in twenty minutes.  
+That flip is everything. If you ask AI for an identity, you will get slop with no centre. If you give AI an identity and ask it to explore applications, you will get hundred usable directions in twenty minutes.
+
 **![][image3]**  
 ---
 
@@ -67,7 +68,7 @@ If you see the AI board and my final board as thumbnails, they look same only. B
 - **Grid rebuilt.** AI spacing is by feel, not by system. Everything was re-laid on a proper grid with consistent gutters.  
 - **Type reset.** Generated text is just decorative noise. You cannot ship it. All typography replaced with real typefaces, real sizes, real scale.  
 - **Meaning added.** I put in the etymology of the name — *Div*, meaning to shine, radiant — and built the tagline from that: *Radiance in Every Thread*. I also added a construction diagram showing how the needle, the thread and the letters come together into one mark. AI cannot do this. It does not know why the brand is called what it is called.  
-- **Icon set.** \[TK — did you draw these in Figma or trace the AI output? If AI gave raster and you rebuilt them as vectors, that is the best "AI failed me" story in this project. Put it here.\]
+- **Icon set.** ChatGPT gave me the icons, but as pixels. At small size on a flyer they were breaking, and line weights were not matching between one icon and the next. So I traced all of them in Figma as vectors, and fixed the weights and corner radius to one standard. Now the same icon works on a flyer, on a signboard, as an Instagram highlight cover, or as a favicon. This is exactly the difference — AI gave me the shape, but shape at one fixed size is not an asset. Vector is the asset.
 
 ![][image5]
 
@@ -77,7 +78,7 @@ If you see the AI board and my final board as thumbnails, they look same only. B
 
 Easiest way to see the difference is to keep two flyers side by side.
 
-> **![][image6]**
+**![][image6]**
 
 One is decorated. Every corner is filled. Floral frames, props scattered, script taglines on top and bottom. Honestly it is pretty. But the service list, which is the only thing the customer actually needs to read, is fighting with all that ornament.
 
