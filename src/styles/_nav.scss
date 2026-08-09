@@ -201,6 +201,10 @@
         padding: 200px 32px 200px;
         align-items: flex-start;
         justify-content: flex-end;
+
+        @include media(phone) {
+          padding: 32px;
+        }
       }
 
       li {
@@ -210,7 +214,7 @@
         .logo-menu {
           @include media(phone) {
             display: block;
-            margin-top: 100px;
+
           }
 
           svg {
