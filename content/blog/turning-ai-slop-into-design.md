@@ -52,7 +52,7 @@ That flip is everything. If you ask AI for an identity, you will get slop with n
 
 Not final assets. Only moodboard.
 
-It gave me composition ideas I would not have sketched myself. It gave me texture and background surfaces. It gave me mockup scenes — shopping bags, hang tags, fabric drapes — which otherwise means a photoshoot or two hours of searching stock sites. It gave me a rough brand board that I could react to.
+It gave me composition ideas I would not have sketched myself. It gave me texture & background surfaces. It gave me mockup scenes — shopping bags, hang tags, fabric drapes — which otherwise means a photoshoot or two hours of searching stock sites. It gave me a rough brand board that I could react to.
 
 And reacting is faster than starting. That is the real benefit. A designer looking at six average layouts will find the right answer faster than a designer staring at an empty artboard.
 
