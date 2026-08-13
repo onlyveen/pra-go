@@ -5,6 +5,7 @@ import ReactMarkdown from "react-markdown";
 import Layout from "@/components/Layout";
 import BlogProgressBar from "@/components/BlogProgressBar";
 import { getAllSlugs, getPostBySlug } from "@lib/blog";
+import { formatDate } from "@lib/date";
 
 export async function getStaticPaths() {
   const slugs = getAllSlugs();
@@ -18,15 +19,6 @@ export async function getStaticProps({ params }) {
   const post = getPostBySlug(params.slug);
   return { props: { post } };
 }
-
-const formatDate = (date) =>
-  date
-    ? new Date(date).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    })
-    : null;
 
 const BlogPost = ({ post }) => {
   const pageTitle = `${post.title} - Praveen Gorakala`;
@@ -67,9 +59,9 @@ const BlogPost = ({ post }) => {
           {post.topics.length > 0 && (
             <div className="pills">
               {post.topics.map((topic, idx) => (
-                <small key={idx} className="tag">
-                  {topic}
-                </small>
+                <Link key={idx} href={`/blog?topic=${encodeURIComponent(topic)}`}>
+                  <small className="tag">{topic}</small>
+                </Link>
               ))}
             </div>
           )}

@@ -1,6 +1,6 @@
 ---
 title: "Draw attention with Visual Hierarchy"
-date: "2026-08-07"
+date: "2021-10-03"
 abstract: "Pure text can be overwhelming. Learn how contrast, white space, proximity, size, and typography create visual hierarchy that guides attention through a design."
 topics: ["Design", "UI/UX", "Visual Hierarchy"]
 thumbnail: "/blog/draw-attention-with-visual-hierarchy/image1.png"

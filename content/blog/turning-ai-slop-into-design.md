@@ -2,7 +2,7 @@
 title: "Turning AI Slop into Beautiful, Impactful Design"
 date: "2026-08-08"
 abstract: "AI is not a final deliverable, it is raw material. How constraining a brand identity by hand first, then letting AI extend it, produced a complete boutique brand identity in a single day."
-topics: ["AI", "Design Process", "Branding"]
+topics: ["AI", "Design Process", "Branding","Design"]
 thumbnail: "/blog/turning-ai-slop-into-design/thumbnail.png"
 ---
 

@@ -86,8 +86,23 @@
         font-weight: 400;
         border-radius: 32px;
         border: 1px solid var(--text-dark);
+        cursor: pointer;
+        transition: opacity 0.2s ease;
+
+        &:hover {
+          opacity: 0.6;
+        }
       }
     }
+  }
+}
+
+.blog-filter {
+  opacity: 0.7;
+  margin-bottom: 24px;
+
+  a {
+    text-decoration: underline;
   }
 }
 

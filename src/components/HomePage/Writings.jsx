@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { formatDate } from "@lib/date";
 
 // Register ScrollTrigger plugin
 if (typeof window !== "undefined") {
@@ -9,9 +11,16 @@ if (typeof window !== "undefined") {
 }
 
 const Writings = ({ writings = [] }) => {
+  const router = useRouter();
   const writingsRef = useRef(null);
   const titleRef = useRef(null);
   const cardsRef = useRef([]);
+
+  const goToTopic = (e, topic) => {
+    e.preventDefault();
+    e.stopPropagation();
+    router.push(`/blog?topic=${encodeURIComponent(topic)}`);
+  };
 
   useEffect(() => {
     // Intersection Observer for body background color change
@@ -106,7 +115,11 @@ const Writings = ({ writings = [] }) => {
             </div>
             <div className="blog-details">
               <h2>{blog.title}</h2>
-              <div className="blog-meta">{blog.readingTime} min read</div>
+              <div className="blog-meta">
+                {blog.date && formatDate(blog.date)}
+                {blog.date && " · "}
+                {blog.readingTime} min read
+              </div>
               <p>
                 {blog.abstract.slice(0, 200)}
                 {blog.abstract.length >= 200 && (
@@ -119,7 +132,7 @@ const Writings = ({ writings = [] }) => {
                 Topics :
                 {blog.topics &&
                   blog.topics.map((topic, idx) => (
-                    <small key={idx} className="tag">
+                    <small key={idx} className="tag" onClick={(e) => goToTopic(e, topic)}>
                       {topic}
                     </small>
                   ))}

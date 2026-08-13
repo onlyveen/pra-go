@@ -82,6 +82,12 @@
       font-weight: 400;
       border-radius: 32px;
       border: 1px solid var(--text-dark);
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+
+      &:hover {
+        opacity: 0.6;
+      }
     }
   }
 
