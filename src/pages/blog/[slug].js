@@ -4,6 +4,7 @@ import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import Layout from "@/components/Layout";
 import BlogProgressBar from "@/components/BlogProgressBar";
+import BlogImage from "@/components/BlogImage";
 import { getAllSlugs, getPostBySlug } from "@lib/blog";
 import { formatDate } from "@lib/date";
 
@@ -44,7 +45,7 @@ const BlogPost = ({ post }) => {
 
           {post.thumbnail && (
             <div className="blog-post-thumb">
-              <img src={post.thumbnail} alt={post.title} />
+              <BlogImage src={post.thumbnail} alt={post.title} />
             </div>
           )}
 
@@ -74,6 +75,7 @@ const BlogPost = ({ post }) => {
                     {children}
                   </a>
                 ),
+                img: ({ src, alt }) => <BlogImage src={src} alt={alt} />,
               }}
             >
               {post.content}
