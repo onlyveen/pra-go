@@ -67,7 +67,17 @@ const BlogPost = ({ post }) => {
           )}
 
           <div className="blog-post-content">
-            <ReactMarkdown>{post.content}</ReactMarkdown>
+            <ReactMarkdown
+              components={{
+                a: ({ href, children, ...props }) => (
+                  <a href={href} target="_blank" rel="noopener noreferrer" {...props}>
+                    {children}
+                  </a>
+                ),
+              }}
+            >
+              {post.content}
+            </ReactMarkdown>
           </div>
         </div>
       </article>

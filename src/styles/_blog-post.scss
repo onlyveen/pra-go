@@ -153,5 +153,26 @@
       border-radius: 10px;
       margin: 16px 0;
     }
+
+    p:has(> strong > img) + p:has(> em:only-child) {
+      font-size: 14px;
+      line-height: 1.5;
+      opacity: 0.6;
+      text-align: center;
+
+      em {
+        display: block;
+        margin-top: -30px;
+        margin-bottom: 30px;
+      }
+    }
+
+    hr:last-of-type ~ p {
+      font-size: 14px;
+      line-height: 1.5;
+      opacity: 0.6;
+      text-align: center;
+      margin: 8px 0;
+    }
   }
 }
