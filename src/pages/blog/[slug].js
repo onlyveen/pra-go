@@ -7,6 +7,7 @@ import BlogProgressBar from "@/components/BlogProgressBar";
 import BlogImage from "@/components/BlogImage";
 import { getAllSlugs, getPostBySlug } from "@lib/blog";
 import { formatDate } from "@lib/date";
+import { absoluteUrl } from "@lib/seo";
 
 export async function getStaticPaths() {
   const slugs = getAllSlugs();
@@ -23,6 +24,8 @@ export async function getStaticProps({ params }) {
 
 const BlogPost = ({ post }) => {
   const pageTitle = `${post.title} - Praveen Gorakala`;
+  const canonicalUrl = absoluteUrl(`/blog/${post.slug}`);
+  const publishedTime = post.date ? new Date(post.date).toISOString() : null;
   const articleRef = useRef(null);
 
   return (
@@ -30,9 +33,36 @@ const BlogPost = ({ post }) => {
       <Head>
         <title>{pageTitle}</title>
         <meta name="description" content={post.abstract} />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={post.abstract} />
-        {post.thumbnail && <meta property="og:image" content={post.thumbnail} />}
+        <link rel="canonical" href={canonicalUrl} />
+
+        {/* Open Graph / Facebook — keys match _app.js so these override the site defaults */}
+        <meta key="og:type" property="og:type" content="article" />
+        <meta key="og:url" property="og:url" content={canonicalUrl} />
+        <meta key="og:title" property="og:title" content={pageTitle} />
+        <meta key="og:description" property="og:description" content={post.abstract} />
+        {publishedTime && (
+          <meta property="article:published_time" content={publishedTime} />
+        )}
+        {post.thumbnail && (
+          <meta key="og:image" property="og:image" content={absoluteUrl(post.thumbnail)} />
+        )}
+
+        {/* Twitter */}
+        <meta key="twitter:card" property="twitter:card" content="summary_large_image" />
+        <meta key="twitter:url" property="twitter:url" content={canonicalUrl} />
+        <meta key="twitter:title" property="twitter:title" content={pageTitle} />
+        <meta
+          key="twitter:description"
+          property="twitter:description"
+          content={post.abstract}
+        />
+        {post.thumbnail && (
+          <meta
+            key="twitter:image"
+            property="twitter:image"
+            content={absoluteUrl(post.thumbnail)}
+          />
+        )}
       </Head>
 
       <BlogProgressBar targetRef={articleRef} />
